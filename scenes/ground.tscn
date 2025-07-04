@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://e3k1i0qhvjm2"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_7ylpw"]
+size = Vector2(1000, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pybca"]
+size = Vector2(1000, 50)
+
+[node name="Ground" type="StaticBody2D"]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+mesh = SubResource("QuadMesh_7ylpw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_pybca")
