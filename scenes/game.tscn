@@ -12,4 +12,13 @@ scale = Vector2(2, 2)
 script = ExtResource("2_yqjtg")
 
 [node name="Ground" parent="." instance=ExtResource("3_lnu2h")]
-position = Vector2(549, 533)
+position = Vector2(160, 374)
+scale = Vector2(5, 1)
+
+[node name="Ground2" parent="." instance=ExtResource("3_lnu2h")]
+position = Vector2(160, 500)
+scale = Vector2(5, 1)
+
+[node name="Ground2" parent="Ground2" instance=ExtResource("3_lnu2h")]
+position = Vector2(98.6, 145)
+scale = Vector2(5, 1)
