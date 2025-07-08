@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://8kakpu88i1mo" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://dy2xjon041wsh" path="res://scripts/player.gd" id="2_yqjtg"]
-[ext_resource type="PackedScene" uid="uid://e3k1i0qhvjm2" path="res://scenes/ground.tscn" id="3_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://0n1k1r6uju58" path="res://scenes/level_1.tscn" id="3_lnu2h"]
 
 [node name="Game" type="Node2D"]
 
@@ -11,14 +11,5 @@ position = Vector2(538, 90)
 scale = Vector2(2, 2)
 script = ExtResource("2_yqjtg")
 
-[node name="Ground" parent="." instance=ExtResource("3_lnu2h")]
-position = Vector2(160, 374)
-scale = Vector2(5, 1)
-
-[node name="Ground2" parent="." instance=ExtResource("3_lnu2h")]
-position = Vector2(160, 500)
-scale = Vector2(5, 1)
-
-[node name="Ground2" parent="Ground2" instance=ExtResource("3_lnu2h")]
-position = Vector2(98.6, 145)
-scale = Vector2(5, 1)
+[node name="Level1" parent="." instance=ExtResource("3_lnu2h")]
+position = Vector2(-40, -223)

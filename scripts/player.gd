@@ -1,9 +1,9 @@
 extends CharacterBody2D
 
-@export var player_speed: float = 175.0;
-@export var player_jump_force: float = -375;
-@export var gravity: float = 25;
-@export var terminal_velocity: float = 500; 
+@export var player_speed: float = 200.0;
+@export var player_jump_force: float = -425;
+@export var gravity: float = 20;
+@export var terminal_velocity: float = 525; 
 
 func _physics_process(delta):
 	
