@@ -1,7 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://e3k1i0qhvjm2"]
 
-[sub_resource type="QuadMesh" id="QuadMesh_7ylpw"]
-size = Vector2(50, 20)
+[ext_resource type="Texture2D" uid="uid://ctn83nd2kf4ir" path="res://sprites/environment/ground.png" id="1_to7up"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pybca"]
 custom_solver_bias = 1.0
@@ -9,10 +8,13 @@ size = Vector2(50, 20)
 
 [node name="Ground" type="StaticBody2D"]
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
-position = Vector2(0, -10)
-mesh = SubResource("QuadMesh_7ylpw")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -10)
 shape = SubResource("RectangleShape2D_pybca")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_repeat = 2
+position = Vector2(0, -10)
+texture = ExtResource("1_to7up")
+region_enabled = true
+region_rect = Rect2(0, 0, 50, 20)

@@ -5,14 +5,9 @@
 
 [node name="Level1" type="Node2D"]
 
-[node name="Ground" parent="." instance=ExtResource("1_014kd")]
-position = Vector2(500, 650)
-scale = Vector2(20, 1.089)
-
-[node name="Ground2" parent="." instance=ExtResource("1_014kd")]
-position = Vector2(145, 540)
-scale = Vector2(5.8, 1)
-
 [node name="Wall" parent="." instance=ExtResource("2_6iamk")]
 position = Vector2(10, 520)
 scale = Vector2(1, 3)
+
+[node name="Ground" parent="." instance=ExtResource("1_014kd")]
+position = Vector2(550, 620)
