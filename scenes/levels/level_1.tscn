@@ -10,4 +10,9 @@ position = Vector2(10, 520)
 scale = Vector2(1, 3)
 
 [node name="Ground" parent="." instance=ExtResource("1_014kd")]
-position = Vector2(550, 620)
+position = Vector2(540, 650)
+length = 800.0
+
+[node name="Ground2" parent="." instance=ExtResource("1_014kd")]
+position = Vector2(340, 590)
+length = 400.0

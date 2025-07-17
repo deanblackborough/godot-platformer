@@ -1,20 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://e3k1i0qhvjm2"]
+[gd_scene load_steps=4 format=3 uid="uid://e3k1i0qhvjm2"]
 
+[ext_resource type="Script" uid="uid://drun1pp8nvarw" path="res://scripts/environment/ground.gd" id="1_kfsio"]
 [ext_resource type="Texture2D" uid="uid://ctn83nd2kf4ir" path="res://sprites/environment/ground.png" id="1_to7up"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pybca"]
 custom_solver_bias = 1.0
-size = Vector2(50, 20)
+size = Vector2(400, 20)
 
 [node name="Ground" type="StaticBody2D"]
+script = ExtResource("1_kfsio")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -10)
+position = Vector2(25, -10)
 shape = SubResource("RectangleShape2D_pybca")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_repeat = 2
-position = Vector2(0, -10)
+position = Vector2(25, -10)
 texture = ExtResource("1_to7up")
 region_enabled = true
 region_rect = Rect2(0, 0, 50, 20)
