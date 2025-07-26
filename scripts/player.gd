@@ -1,11 +1,11 @@
 extends CharacterBody2D
 
-@export var world_gravity: float = 20;
+@export var world_gravity: float = 25;
 @export var world_terminal_velocity: float = 525;
 
-@export var player_speed: float = 200.0;
-@export var player_jump_force: float = -425;
-@export var player_max_jumps: int = 2; 
+@export var player_speed: float = 192.0;
+@export var player_jump_force: float = -396;
+@export var player_max_jumps: int = 1;
 
 var player_jumps: int = 0;
 
