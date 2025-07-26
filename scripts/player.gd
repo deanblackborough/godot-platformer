@@ -9,6 +9,9 @@ extends CharacterBody2D
 
 var player_jumps: int = 0;
 
+func _ready():
+	$Camera2D.zoom = Vector2(2, 2)
+
 func _physics_process(delta):
 	
 	if is_on_floor() == false:
@@ -37,11 +40,6 @@ func _physics_process(delta):
 	
 	move_and_slide();
 	
-	print(player_jumps);
-	#print(player_direction);
-	#print(player_speed);
-	#print(velocity);
-	
 func draw_player_sprite(
 	player_direction: float, 
 	player_speed: float,
@@ -50,13 +48,13 @@ func draw_player_sprite(
 ):
 	if not player_on_floor:
 		if player_velocity_y < 0:
-			$AnimatedSprite2D.animation = "jump";
+			$AnimatedSprite2D.animation = "Jump";
 			## Add fall animation
 	else:
 		if player_direction != 0:
-			$AnimatedSprite2D.animation = "run";
+			$AnimatedSprite2D.animation = "Run";
 		else:
-			$AnimatedSprite2D.animation = "idle";
+			$AnimatedSprite2D.animation = "Idle";
 
 	if player_direction != 0:
 		$AnimatedSprite2D.scale.x = player_direction;
