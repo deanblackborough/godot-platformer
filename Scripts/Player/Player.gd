@@ -1,3 +1,4 @@
+# res://Scripts/Player/Player.gd
 extends CharacterBody2D
 
 @export var world_gravity: float = 32;
