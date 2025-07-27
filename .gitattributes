@@ -1,1 +1,23 @@
-* text eol=lf
+# Normalize line endings for all text files to LF
+* text=auto eol=lf
+
+# Treat common binary assets as binary to prevent corruption
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.bmp binary
+*.tga binary
+*.webp binary
+*.psd binary
+*.exr binary
+*.hdr binary
+
+# Optional: mark audio and model files as binary too
+*.wav binary
+*.mp3 binary
+*.ogg binary
+*.flac binary
+*.glb binary
+*.gltf binary
+*.blend binary
