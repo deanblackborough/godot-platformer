@@ -1,3 +1,5 @@
+# res://Scripts/Player/Player.gd
+
 extends CharacterBody2D
 
 class_name Player

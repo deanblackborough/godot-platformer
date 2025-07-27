@@ -1,3 +1,5 @@
+# res://Scripts/Player/States/PlayerState.gd
+
 extends Node
 
 class_name PlayerState

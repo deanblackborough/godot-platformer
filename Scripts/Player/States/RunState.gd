@@ -1,3 +1,5 @@
+# res://Scripts/Player/States/RunState.gd
+
 extends PlayerState
 
 class_name RunState

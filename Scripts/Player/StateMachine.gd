@@ -1,4 +1,7 @@
+# res://Scripts/Player/StateMachine.gd
+
 extends Node
+
 class_name StateMachine
 
 var states = {}

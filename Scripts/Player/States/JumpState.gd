@@ -1,3 +1,5 @@
+# res://Scripts/Player/States/JumpState.gd
+
 extends PlayerState
 
 class_name JumpState

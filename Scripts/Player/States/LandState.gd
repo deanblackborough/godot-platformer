@@ -1,3 +1,5 @@
+# res://Scripts/Player/States/LandState.gd
+
 extends PlayerState
 
 class_name LandState

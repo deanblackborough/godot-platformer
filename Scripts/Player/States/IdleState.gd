@@ -1,3 +1,5 @@
+# res://Scripts/Player/States/IdleState.gd
+
 extends PlayerState
 
 class_name IdleState
