@@ -10,6 +10,7 @@ class_name Player
 @export var player_max_jumps: int = 1
 
 var player_jumps: int = 0
+var player_hard_land_time: float = 0.3
 
 @onready var state_machine: StateMachine = $StateMachine
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D

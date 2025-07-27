@@ -25,6 +25,10 @@ func physics_update(delta):
 
 	if player.is_on_floor():
 		player.player_jumps = 0;
-		player.state_machine.change_state("IdleState")
+		
+		if fall_time > player.player_hard_land_time:
+			player.state_machine.change_state("LandState")
+		else:
+			player.state_machine.change_state("IdleState")
 		return
 		
