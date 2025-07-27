@@ -1,5 +1,7 @@
 extends PlayerState
 
+class_name RunState
+
 func enter(_player):
 	super.enter(_player)
 	player.animated_sprite.animation = "Run"

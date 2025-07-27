@@ -1,5 +1,7 @@
 extends PlayerState
 
+class_name FallState
+
 var fall_time: float = 0.0
 
 func enter(_player):

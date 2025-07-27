@@ -1,5 +1,7 @@
 extends PlayerState
 
+class_name JumpState
+
 func enter(_player):
 	super.enter(_player)
 	# Reset vertical velocity and apply jump force
