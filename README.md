@@ -13,9 +13,12 @@ More details soon, aiming for feature parity with my [Game Maker Platformer](htt
 - Gravity setting and terminal velocity setting
 - Max jumps setting
 - Hard land timer setting
+- Toggle weapon, adjusts idle and run animation
 
 ## Next
-- Moving platforms
+- Moving platforms, options to control movement
+- Simple combat, multiple slashes, tight sword frames
+- Debug display, show state and options
 
 ## To do
 Everything to get it equal to the [Game Maker Platformer](https://github.com/deanblackborough/gm-platformer) project

@@ -6,7 +6,6 @@ class_name JumpState
 
 func enter(_player):
 	super.enter(_player)
-	player.player_weapon_drawn = false
 	player.velocity.y = player.player_jump_force
 	player.animated_sprite.animation = "Jump"
 

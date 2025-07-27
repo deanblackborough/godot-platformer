@@ -6,10 +6,20 @@ class_name RunState
 
 func enter(_player):
 	super.enter(_player)
-	player.player_weapon_drawn = false
-	player.animated_sprite.animation = "Run"
+	
+	if player.player_weapon_drawn == false:
+		player.animated_sprite.animation = "Run"
+	else:
+		player.animated_sprite.animation = "Run-Weapon"
 
 func physics_update(delta):
+	if Input.is_action_just_pressed("toggleWeapon"):
+		player.player_weapon_drawn = !player.player_weapon_drawn
+		if player.player_weapon_drawn == false:
+			player.animated_sprite.animation = "Run"
+		else:
+			player.animated_sprite.animation = "Run-Weapon"
+	
 	if not player.is_on_floor():
 		player.state_machine.change_state("FallState")
 		return
