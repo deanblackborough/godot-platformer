@@ -1,7 +1,7 @@
 # res://Scripts/Player/Player.gd
 extends CharacterBody2D
 
-@export var world_gravity: float = 32;
+@export var world_gravity: float = 1920;
 @export var world_terminal_velocity: float = 525;
 
 @export var player_speed: float = 140.0;
@@ -16,7 +16,7 @@ func _ready():
 func _physics_process(delta):
 	
 	if is_on_floor() == false:
-		velocity.y += world_gravity;
+		velocity.y += world_gravity * delta;
 		
 		if velocity.y > world_terminal_velocity:
 			velocity.y = world_terminal_velocity;
@@ -52,10 +52,10 @@ func draw_player_sprite(
 			$AnimatedSprite2D.animation = "Jump";
 			## Add fall animation
 	else:
-		if player_direction != 0:
+		if player_direction != 0.0:
 			$AnimatedSprite2D.animation = "Run";
 		else:
 			$AnimatedSprite2D.animation = "Idle";
 
-	if player_direction != 0:
+	if player_direction != 0.0:
 		$AnimatedSprite2D.scale.x = player_direction;
