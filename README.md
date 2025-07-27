@@ -14,10 +14,13 @@ More details soon, aiming for feature parity with my [Game Maker Platformer](htt
 - Max jumps setting
 - Hard land timer setting
 
+## Next
+- Moving platforms
+
 ## To do
 Everything to get it equal to the [Game Maker Platformer](https://github.com/deanblackborough/gm-platformer) project
 
 ## Credits
 
-Player character is by https://zegley.itch.io/ - check his page for this asset [here](https://zegley.itch.io/2d-platformermetroidvania-asset-pack)
-Level assets by Kenney http://support.kenney.nl
+- Player character is by https://zegley.itch.io/ - check his page for this asset [here](https://zegley.itch.io/2d-platformermetroidvania-asset-pack)
+- Level assets by Kenney http://support.kenney.nl
