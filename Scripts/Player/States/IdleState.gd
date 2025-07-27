@@ -6,9 +6,24 @@ class_name IdleState
 
 func enter(_player):
 	super.enter(_player)
-	player.animated_sprite.animation = "Idle"
+	
+	print("Weapon state " + str(player.player_weapon_drawn))
+	
+	if player.player_weapon_drawn == false:
+		player.animated_sprite.animation = "Idle"
+	else:
+		player.animated_sprite.animation = "Idle-Weapon"
 
 func physics_update(delta):
+	if Input.is_action_just_pressed("toggleWeapon"):
+		print("Weapon toggled, new state " + str(player.player_weapon_drawn))
+		player.player_weapon_drawn = !player.player_weapon_drawn
+		
+		if player.player_weapon_drawn == false:
+			player.animated_sprite.animation = "Idle"
+		else:
+			player.animated_sprite.animation = "Idle-Weapon"
+	
 	if not player.is_on_floor():
 		player.state_machine.change_state("FallState")
 		return

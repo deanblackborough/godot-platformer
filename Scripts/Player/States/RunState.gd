@@ -6,6 +6,7 @@ class_name RunState
 
 func enter(_player):
 	super.enter(_player)
+	player.player_weapon_drawn = false
 	player.animated_sprite.animation = "Run"
 
 func physics_update(delta):

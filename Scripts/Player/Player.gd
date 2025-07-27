@@ -13,6 +13,7 @@ class_name Player
 
 var player_jumps: int = 0
 var player_hard_land_time: float = 0.3
+var player_weapon_drawn: bool = false
 
 @onready var state_machine: StateMachine = $StateMachine
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D

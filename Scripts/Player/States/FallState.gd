@@ -9,6 +9,7 @@ var fall_time: float = 0.0
 func enter(_player):
 	super.enter(_player)
 	fall_time = 0.0
+	player.player_weapon_drawn = false 
 	player.animated_sprite.animation = "Fall"
 
 func physics_update(delta):
