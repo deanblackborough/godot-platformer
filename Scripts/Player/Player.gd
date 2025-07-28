@@ -19,6 +19,7 @@ var player_weapon_drawn: bool = false
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 @onready var debug_state: Label = $CanvasLayer/MarginContainer/VBoxContainer/State
+@onready var debug_speed: Label = $CanvasLayer/MarginContainer/VBoxContainer/Speed
 @onready var debug_weapon_drawn: Label = $CanvasLayer/MarginContainer/VBoxContainer/WeaponDrawn
 @onready var debug_jumps: Label = $CanvasLayer/MarginContainer/VBoxContainer/Jumps
 

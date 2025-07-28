@@ -475,10 +475,16 @@ layout_mode = 2
 
 [node name="State" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "PlayerState"
+text = "State: "
+
+[node name="Speed" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Speed: "
 
 [node name="WeaponDrawn" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+text = "WeaponDrawn: "
 
 [node name="Jumps" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+text = "Jumps: "
