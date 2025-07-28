@@ -475,25 +475,25 @@ layout_mode = 2
 
 [node name="State" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 10
 text = "State: "
 
 [node name="MaxSpeed" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 10
 text = "Speed: "
 
 [node name="Speed" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 10
 text = "Speed: "
 
 [node name="WeaponDrawn" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 10
 text = "WeaponDrawn: "
 
 [node name="Jumps" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 10
 text = "Jumps: "
