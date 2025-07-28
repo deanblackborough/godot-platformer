@@ -7,7 +7,7 @@ class_name Player
 @export var world_gravity: float = 1920
 @export var world_terminal_velocity: float = 525
 
-@export var player_speed: float = 140.0
+@export var player_max_speed: float = 140.0
 @export var player_jump_force: float = -450
 @export var player_max_jumps: int = 1
 
@@ -19,12 +19,14 @@ var player_weapon_drawn: bool = false
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 @onready var debug_state: Label = $CanvasLayer/MarginContainer/VBoxContainer/State
+@onready var debug_max_speed: Label = $CanvasLayer/MarginContainer/VBoxContainer/MaxSpeed
 @onready var debug_speed: Label = $CanvasLayer/MarginContainer/VBoxContainer/Speed
 @onready var debug_weapon_drawn: Label = $CanvasLayer/MarginContainer/VBoxContainer/WeaponDrawn
 @onready var debug_jumps: Label = $CanvasLayer/MarginContainer/VBoxContainer/Jumps
 
 func _ready():
 	$Camera2D.zoom = Vector2(2, 2)
+	debug_max_speed.text = "MaxSpeed: +/- %s" % str(player_max_speed)
 	state_machine.change_state("IdleState")
 	
 func _process(delta):

@@ -19,7 +19,8 @@ func physics_update(delta):
 		player.velocity.y = player.world_terminal_velocity
 
 	var direction = Input.get_axis("moveLeft", "moveRight")
-	player.velocity.x = player.player_speed * direction
+	player.debug_speed.text = "Speed %s " % str(player.player_max_speed * direction)
+	player.velocity.x = player.player_max_speed * direction
 	
 	if Input.is_action_just_pressed("jump"):
 		if player.player_jumps < player.player_max_jumps:

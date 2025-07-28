@@ -12,7 +12,8 @@ func enter(_player):
 func physics_update(delta):
 	# Apply horizontal input
 	var direction = Input.get_axis("moveLeft", "moveRight")
-	player.velocity.x = player.player_speed * direction
+	player.debug_speed.text = "Speed %s " % str(player.player_max_speed * direction)
+	player.velocity.x = player.player_max_speed * direction
 
 	# Apply gravity
 	player.velocity.y += player.world_gravity * delta
