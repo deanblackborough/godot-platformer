@@ -18,9 +18,17 @@ var player_weapon_drawn: bool = false
 @onready var state_machine: StateMachine = $StateMachine
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
+@onready var debug_state: Label = $CanvasLayer/MarginContainer/VBoxContainer/State
+@onready var debug_weapon_drawn: Label = $CanvasLayer/MarginContainer/VBoxContainer/WeaponDrawn
+@onready var debug_jumps: Label = $CanvasLayer/MarginContainer/VBoxContainer/Jumps
+
 func _ready():
 	$Camera2D.zoom = Vector2(2, 2)
 	state_machine.change_state("IdleState")
+	
+func _process(delta):
+	debug_weapon_drawn.text = "WeaponDrawn: %s" % str(player_weapon_drawn)
+	debug_jumps.text = "Jumps: %d" % player_jumps
 
 func _physics_process(delta):
 	state_machine.physics_update(delta)

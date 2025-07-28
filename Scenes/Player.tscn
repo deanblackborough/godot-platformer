@@ -454,3 +454,31 @@ metadata/_custom_type_script = "uid://c7txd6g22535f"
 [node name="LandState" type="Node" parent="StateMachine"]
 script = ExtResource("11_ksbbd")
 metadata/_custom_type_script = "uid://c7txd6g22535f"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -89.0
+offset_top = -77.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+
+[node name="State" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "PlayerState"
+
+[node name="WeaponDrawn" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Jumps" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+layout_mode = 2
