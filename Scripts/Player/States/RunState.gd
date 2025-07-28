@@ -30,7 +30,9 @@ func physics_update(delta):
 	var direction = Input.get_axis("moveLeft", "moveRight")
 	player.debug_speed.text = "Speed %s " % str(player.player_max_speed * direction)
 	player.velocity.x = player.player_max_speed * direction
+	
 	if direction == 0:
+		player.velocity.x = 0.0
 		player.state_machine.change_state("IdleState")
 		return
 	
