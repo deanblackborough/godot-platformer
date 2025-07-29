@@ -8,17 +8,17 @@ func enter(_player):
 	super.enter(_player)
 	
 	if player.player_weapon_drawn == false:
-		player.animated_sprite.animation = "Idle"
+		player.animation_player.play("idle")
 	else:
-		player.animated_sprite.animation = "Idle-Weapon"
+		player.animation_player.play("idle-weapon")
 
 func physics_update(delta):
 	if Input.is_action_just_pressed("toggleWeapon"):
 		player.player_weapon_drawn = !player.player_weapon_drawn
 		if player.player_weapon_drawn == false:
-			player.animated_sprite.animation = "Idle"
+			player.animation_player.play("idle")
 		else:
-			player.animated_sprite.animation = "Idle-Weapon"
+			player.animation_player.play("idle-weapon")
 	
 	if not player.is_on_floor():
 		player.state_machine.change_state("FallState")

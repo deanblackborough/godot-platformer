@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cal7po27nrui4"
-path="res://.godot/imported/Player-Idle-Waepon.png-036220590d579116e3f3e064e4c182f7.ctex"
+uid="uid://c15l8qxn3i54i"
+path="res://.godot/imported/Sprite-Sheet.png-963fd2782653806b04475a8f3e775c4d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Player/Player-Idle-Waepon.png"
-dest_files=["res://.godot/imported/Player-Idle-Waepon.png-036220590d579116e3f3e064e4c182f7.ctex"]
+source_file="res://Sprites/Player/Sprite-Sheet.png"
+dest_files=["res://.godot/imported/Sprite-Sheet.png-963fd2782653806b04475a8f3e775c4d.ctex"]
 
 [params]
 

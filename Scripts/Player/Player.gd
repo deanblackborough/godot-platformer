@@ -8,6 +8,7 @@ class_name Player
 @export var world_terminal_velocity: float = 525
 
 @export var player_max_speed: float = 140.0
+@export var player_acceleration: int = 1500
 @export var player_jump_force: float = -450
 @export var player_max_jumps: int = 1
 
@@ -16,7 +17,8 @@ var player_hard_land_time: float = 0.3
 var player_weapon_drawn: bool = false
 
 @onready var state_machine: StateMachine = $StateMachine
-@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var sprite: Sprite2D = $Sprite2D
 
 @onready var debug_state: Label = $CanvasLayer/MarginContainer/VBoxContainer/State
 @onready var debug_max_speed: Label = $CanvasLayer/MarginContainer/VBoxContainer/MaxSpeed

@@ -6,8 +6,7 @@ class_name LandState
 
 func enter(_player):
 	super.enter(_player)
-	player.animated_sprite.animation = "Land"
-	player.animated_sprite.play()
+	player.animation_player.play("land")
 	
 	var timer := get_tree().create_timer(0.3)  # Adjust to match Land animation duration
 	await timer.timeout

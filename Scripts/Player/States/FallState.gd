@@ -9,7 +9,7 @@ var fall_time: float = 0.0
 func enter(_player):
 	super.enter(_player)
 	fall_time = 0.0
-	player.animated_sprite.animation = "Fall"
+	player.animation_player.play("fall")
 
 func physics_update(delta):
 	fall_time += delta;

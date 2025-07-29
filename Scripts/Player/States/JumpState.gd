@@ -7,7 +7,7 @@ class_name JumpState
 func enter(_player):
 	super.enter(_player)
 	player.velocity.y = player.player_jump_force
-	player.animated_sprite.animation = "Jump"
+	player.animation_player.play("jump")
 
 func physics_update(delta):
 	# Apply horizontal input
