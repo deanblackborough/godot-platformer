@@ -4,29 +4,16 @@ extends PlayerState
 
 class_name RunState
 
-func enter(_player):
+func enter(_player: Player):
 	super.enter(_player)
 	
-	if player.player_weapon_drawn == false:
-		player.animation_player.play("run")
-	else:
-		player.animation_player.play("run-weapon")
-
-func physics_update(delta):
+	player.play_animation("run", true)
+		
+func process_update(delta):
 	if Input.is_action_just_pressed("toggleWeapon"):
 		player.player_weapon_drawn = !player.player_weapon_drawn
-		if player.player_weapon_drawn == false:
-			player.animation_player.play("run")
-		else:
-			player.animation_player.play("run-weapon")
-	
-	if not player.is_on_floor():
-		player.state_machine.change_state("FallState")
-		return
-		
-	if player.is_on_floor():
-		player.player_jumps = 0
-	
+		player.play_animation("run", true)
+			
 	var direction = Input.get_axis("moveLeft", "moveRight")
 	var target_speed = player.player_max_speed * direction
 	player.velocity.x = move_toward(player.velocity.x, target_speed, player.player_acceleration * delta)
@@ -36,6 +23,19 @@ func physics_update(delta):
 		player.velocity.x = 0.0
 		player.state_machine.change_state("IdleState")
 		return
+		
+	if direction < 0.0:
+		player.sprite.flip_h = true 
+	else:
+		player.sprite.flip_h = false
+
+func physics_update(delta):
+	if not player.is_on_floor():
+		player.state_machine.change_state("FallState")
+		return
+		
+	if player.is_on_floor():
+		player.player_jumps = 0
 	
 	if Input.is_action_just_pressed("jump"):
 		if player.player_jumps < player.player_max_jumps:
@@ -43,7 +43,3 @@ func physics_update(delta):
 			player.state_machine.change_state("JumpState")
 			return
 			
-	if direction < 0.0:
-		player.sprite.flip_h = true 
-	else:
-		player.sprite.flip_h = false

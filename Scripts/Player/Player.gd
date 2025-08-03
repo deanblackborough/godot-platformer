@@ -31,10 +31,20 @@ func _ready():
 	debug_max_speed.text = "MaxSpeed: +/- %s" % str(player_max_speed)
 	state_machine.change_state("IdleState")
 	
-func _process(delta):
+func _input(event: InputEvent):
+	state_machine.input_update(event)
+	
+func _process(delta: float):
+	state_machine.process_update(delta)
 	debug_weapon_drawn.text = "WeaponDrawn: %s" % str(player_weapon_drawn)
 	debug_jumps.text = "Jumps: %d" % player_jumps
 
-func _physics_process(delta):
+func _physics_process(delta: float):
 	state_machine.physics_update(delta)
 	move_and_slide()
+	
+func play_animation(animation: String, weapon_version: bool = false):
+	if weapon_version == true and player_weapon_drawn == true:
+		animation_player.play("%s-weapon" % animation)
+	else:
+		animation_player.play(animation)

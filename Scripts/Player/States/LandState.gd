@@ -4,14 +4,16 @@ extends PlayerState
 
 class_name LandState
 
+var timer
+
 func enter(_player):
 	super.enter(_player)
-	player.animation_player.play("land")
+	player.play_animation("land")
+	timer = get_tree().create_timer(0.4) 
 	
-	var timer := get_tree().create_timer(0.3)  # Adjust to match Land animation duration
+func process_update(delta):
 	await timer.timeout
 	player.state_machine.change_state("IdleState")
 
 func physics_update(delta):
 	player.velocity = Vector2.ZERO
-	player.move_and_slide()
