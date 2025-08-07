@@ -108,5 +108,5 @@ terrain_set_0/terrain_0/name = "Grass 1"
 terrain_set_0/terrain_0/color = Color(0.0156863, 0.211765, 0.12549, 1)
 sources/0 = SubResource("TileSetAtlasSource_5cyp6")
 
-[node name="TileMapLayer" type="TileMapLayer"]
+[node name="TileMapLayerSidesGrass" type="TileMapLayer"]
 tile_set = SubResource("TileSet_mwev2")

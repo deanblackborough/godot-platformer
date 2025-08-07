@@ -13,18 +13,22 @@ More details soon, aiming for feature parity with my [Game Maker Platformer](htt
 - Gravity setting and terminal velocity setting
 - Max jumps setting
 - Hard land timer setting
-- Toggle weapon, alternate idle and run animations
+- Toggle weapon, alternate idle and run animations when weapon equipped
+- Tilemap for grass (sides terrain set)
+- Debug panel to show player, state, weapon status, speed etc.
 
 ## Next
-- Correct animations - extra frame or two
-- Moving platforms, options to control movement
-- Simple combat, multiple slashes, tight sword frames
-- Debug display, show state and options
+- Tileset for foliage to add detail
+- Switch input checks to base player class and input method so each of the three, input, process and physics_process are used correctly
+- Lerping on the animations
+- Simple combat, pixel perfect collisions for swings
+- Basic enemies, patrolling
+- much more.
 
 ## To do
-Everything to get it equal to the [Game Maker Platformer](https://github.com/deanblackborough/gm-platformer) project
+Everything to get it equal to the [Game Maker Platformer](https://github.com/deanblackborough/gm-platformer) project and much more
 
 ## Credits
 
 - Player character is by https://zegley.itch.io/ - check his page for this asset [here](https://zegley.itch.io/2d-platformermetroidvania-asset-pack)
-- Level assets by Kenney http://support.kenney.nl
+- Level assets by Kenney http://support.kenney.nl - modified slightly
