@@ -8,7 +8,10 @@ class_name Player
 @export var world_terminal_velocity: float = 525
 
 @export var player_max_speed: float = 140.0
-@export var player_acceleration: int = 1500
+
+@export var player_acceleration_gorund: int = 1500
+@export var player_deacceleration_gorund: int = 1800
+
 @export var player_jump_force: float = -450
 @export var player_max_jumps: int = 1
 
