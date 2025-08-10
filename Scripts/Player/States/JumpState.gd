@@ -7,8 +7,6 @@ class_name JumpState
 func enter(_player):
 	super.enter(_player)
 	
-	player.velocity.y = player.jump_force
-	
 	player.play_animation("jump")
 	
 func process_update(_delta):
@@ -22,8 +20,8 @@ func process_update(_delta):
 
 func physics_update(_delta):
 	
-	if Input.is_action_just_pressed("jump") and player.can_jump():
-		player.try_to_jump()
+	if Input.is_action_just_pressed("jump"):
+		player.queue_jump()
 		return
 	
 	var direction = Input.get_axis("moveLeft", "moveRight")

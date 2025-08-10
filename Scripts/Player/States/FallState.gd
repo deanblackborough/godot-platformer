@@ -15,6 +15,8 @@ func enter(_player):
 	
 func process_update(_delta):
 	
+	fall_time += _delta;
+	
 	var direction = Input.get_axis("moveLeft", "moveRight")
 	
 	if direction < 0.0:
@@ -24,13 +26,11 @@ func process_update(_delta):
 
 func physics_update(_delta):
 	
-	fall_time += _delta;
-	
 	var direction = Input.get_axis("moveLeft", "moveRight")
 	player.velocity.x = player.apply_acceleration_in_x_in_air(direction, _delta)
 	
-	if Input.is_action_just_pressed("jump") and player.can_jump():
-		player.try_to_jump()
+	if Input.is_action_just_pressed("jump"):
+		player.queue_jump()
 		return
 
 	if player.is_on_floor():

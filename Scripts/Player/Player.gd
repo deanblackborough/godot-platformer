@@ -16,15 +16,19 @@ class_name Player
 @export var air_deacceleration: int = 1000
 
 @export_group("Player Jumping")
-@export var jump_force: float = -500
-@export var max_jumps: int = 2
+@export var jump_force: float = -400
+@export var max_jumps: int = 1
 
 @export_group("Player Feel")
 @export var hard_land_run_time: float = 0.8
-@export var hard_land_fall_time: float = 0.4
+@export var hard_land_fall_time: float = 0.6
 @export var land_run_time: float = 0.2
 
 var jumps: int = 0
+var coyote_time : float = 0.1
+var buffer_time : float = 0.12
+var coyote_timer : float = 0.0
+var buffer_timer : float = -1.0
 var weapon_drawn: bool = false
 
 @onready var state_machine: StateMachine = $StateMachine
@@ -50,6 +54,8 @@ func _process(delta: float):
 
 func _physics_process(delta: float):
 	
+	tick_jump_timers(delta)
+	
 	if not is_on_floor():
 		velocity.y = clamp(velocity.y + world_gravity * delta, -INF, world_terminal_velocity)
 	
@@ -62,16 +68,29 @@ func play_animation(animation: String, weapon_version: bool = false):
 	else:
 		animation_player.play(animation)
 		
-func can_jump() -> bool:
+func queue_jump():
 	if jumps < max_jumps:
-		return true
-			
-	return false
-	
-func try_to_jump():
-		state_machine.change_state("JumpState")
-		jumps += 1
-		return
+		buffer_timer = buffer_time
+
+func tick_jump_timers(delta):
+	if !is_on_floor(): 
+		coyote_timer = max(coyote_timer - delta, -1.0)
+	else:
+		coyote_timer = coyote_time
+		jumps = 0
+		
+	if buffer_timer >= 0.0:
+		buffer_timer -= delta
+		if can_jump_now():
+			do_jump()
+
+func can_jump_now() -> bool:
+	return (coyote_timer > 0.0 or jumps < max_jumps) and buffer_timer >= 0.0
+
+func do_jump():
+	jumps += 1
+	velocity.y = jump_force
+	buffer_timer = -1.0
 	
 func apply_acceleration_in_x_on_ground(direction: float, delta: float) -> float:
 	var target_speed = max_speed * direction

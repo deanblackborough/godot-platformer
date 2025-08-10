@@ -36,6 +36,6 @@ func physics_update(_delta):
 		player.state_machine.change_state("FallState")
 		return
 	
-	if Input.is_action_just_pressed("jump") and player.can_jump(): 
-		player.try_to_jump()
+	if Input.is_action_just_pressed("jump"): 
+		player.queue_jump()
 		return
