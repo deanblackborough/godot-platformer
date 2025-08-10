@@ -16,7 +16,7 @@ func process_update(delta):
 			
 	var direction = Input.get_axis("moveLeft", "moveRight")
 	var target_speed = player.player_max_speed * direction
-	player.velocity.x = move_toward(player.velocity.x, target_speed, player.player_acceleration_ground * delta)
+	player.velocity.x = move_toward(player.velocity.x, target_speed, player.player_acceleration * delta)
 	player.debug_speed.text = "Speed %s " % str(player.velocity.x)
 	
 	if direction == 0:
@@ -35,7 +35,6 @@ func physics_update(delta):
 		return
 		
 	if player.is_on_floor():
-		player.velocity.y = 0
 		player.player_jumps = 0
 	
 	if Input.is_action_just_pressed("jump"):
