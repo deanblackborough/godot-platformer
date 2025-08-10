@@ -27,7 +27,7 @@ func physics_update(_delta):
 		return
 
 	if player.is_on_floor():
-		if fall_time > player.hard_land_time:
+		if fall_time > player.hard_land_fall_time:
 			player.state_machine.change_state("HardLandState")
 		else:
 			player.state_machine.change_state("LandState")

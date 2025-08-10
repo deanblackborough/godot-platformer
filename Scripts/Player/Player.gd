@@ -17,9 +17,12 @@ class_name Player
 @export var jump_force: float = -500
 @export var max_jumps: int = 2
 
+@export_group("Player Feel")
+@export var hard_land_run_time: float = 0.8
+@export var hard_land_fall_time: float = 0.4
+@export var land_run_time: float = 0.2
+
 var jumps: int = 0
-var jump_handled: bool = false
-var hard_land_time: float = 0.4
 var weapon_drawn: bool = false
 
 @onready var state_machine: StateMachine = $StateMachine
