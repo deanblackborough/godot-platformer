@@ -12,7 +12,13 @@ func enter(_player):
 	player.play_animation("jump")
 	
 func process_update(_delta):
-	pass
+	
+	var direction = Input.get_axis("moveLeft", "moveRight")
+	
+	if direction < 0.0:
+		player.sprite.flip_h = true 
+	else:
+		player.sprite.flip_h = false
 
 func physics_update(_delta):
 	
@@ -21,7 +27,8 @@ func physics_update(_delta):
 		return
 	
 	var direction = Input.get_axis("moveLeft", "moveRight")
-	player.velocity.x = player.max_speed * direction
+	var target_speed = player.max_speed * direction
+	player.velocity.x = move_toward(player.velocity.x, target_speed, player.air_acceleration * _delta)
 
 	# When velocity starts going downward, switch to Fall
 	if not player.is_on_floor() and player.velocity.y > 0:

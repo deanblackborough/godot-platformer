@@ -9,9 +9,11 @@ class_name Player
 @export var world_terminal_velocity: float = 500
 
 @export_group("Player Movement")
-@export var max_speed: float = 140.0
+@export var max_speed: float = 160.0
 @export var ground_acceleration: int = 1500
-@export var ground_deacceleration: int = 1500
+@export var ground_deacceleration: int = 2000
+@export var air_acceleration: int = 800
+@export var air_deacceleration: int = 1000
 
 @export_group("Player Jumping")
 @export var jump_force: float = -500
@@ -49,7 +51,7 @@ func _process(delta: float):
 func _physics_process(delta: float):
 	
 	if not is_on_floor():
-		velocity.y = min(velocity.y + world_gravity * delta, world_terminal_velocity)	
+		velocity.y = clamp(velocity.y + world_gravity * delta, -INF, world_terminal_velocity)
 	
 	state_machine.physics_update(delta)
 	move_and_slide()
@@ -71,3 +73,5 @@ func try_to_jump():
 		jumps += 1
 		return
 	
+func apply_group_acceleration():
+	pass

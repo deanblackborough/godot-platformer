@@ -16,11 +16,19 @@ func enter(_player):
 func process_update(_delta):
 	
 	fall_time += _delta;
+	
+	var direction = Input.get_axis("moveLeft", "moveRight")
+	
+	if direction < 0.0:
+		player.sprite.flip_h = true 
+	else:
+		player.sprite.flip_h = false
 
 func physics_update(_delta):
 	
 	var direction = Input.get_axis("moveLeft", "moveRight")
-	player.velocity.x = player.max_speed * direction
+	var target_speed = player.max_speed * direction
+	player.velocity.x = move_toward(player.velocity.x, target_speed, player.air_acceleration * _delta)
 	
 	if Input.is_action_just_pressed("jump") and player.can_jump():
 		player.try_to_jump()

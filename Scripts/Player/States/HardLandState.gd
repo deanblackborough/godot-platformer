@@ -4,24 +4,24 @@ extends PlayerState
 
 class_name HardLandState
 
-var timer
+var timer: SceneTreeTimer
 
 func enter(_player):
 	super.enter(_player)
 	
 	player.play_animation("hard-land")
-	
-	timer = get_tree().create_timer(player.hard_land_run_time) 
+	timer = get_tree().create_timer(player.hard_land_run_time)
+	timer.timeout.connect(_end, CONNECT_ONE_SHOT)
 	
 func process_update(_delta):
-	
-	await timer.timeout
-	
-	if player.is_on_floor():
-		player.jumps = 0;
-		
-	player.state_machine.change_state("IdleState")
+	pass
 
 func physics_update(_delta):
 	
-	player.velocity = Vector2.ZERO
+	player.velocity.y = 0.0
+	player.velocity.x = move_toward(player.velocity.x, 0.0, player.ground_deacceleration * _delta)
+	
+func _end():
+	if player.is_on_floor(): 
+		player.jumps = 0
+		player.state_machine.change_state("IdleState")
