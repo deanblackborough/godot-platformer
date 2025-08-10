@@ -73,5 +73,28 @@ func try_to_jump():
 		jumps += 1
 		return
 	
-func apply_group_acceleration():
-	pass
+func apply_acceleration_in_x_on_ground(direction: float, delta: float) -> float:
+	var target_speed = max_speed * direction
+	var player_velocity = move_toward(velocity.x, target_speed, ground_acceleration * delta)
+	debug_speed.text = "Speed %s " % str(player_velocity)
+	
+	return player_velocity
+	
+func apply_acceleration_in_x_in_air(direction: float, delta: float) -> float:
+	var target_speed = max_speed * direction
+	var player_velocity = move_toward(velocity.x, target_speed, air_acceleration * delta)
+	debug_speed.text = "Speed %s " % str(player_velocity)
+	
+	return player_velocity
+	
+func apply_deacceleration_in_x_on_ground(delta: float) -> float:
+	var player_velocity = move_toward(velocity.x, 0.0, ground_deacceleration * delta)
+	debug_speed.text = "Speed %s " % str(player_velocity)
+	
+	return player_velocity
+	
+func apply_deacceleration_in_x_in_air(delta: float) -> float:
+	var player_velocity = move_toward(velocity.x, 0.0, ground_deacceleration * delta)
+	debug_speed.text = "Speed %s " % str(player_velocity)
+	
+	return player_velocity

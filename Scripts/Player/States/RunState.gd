@@ -30,9 +30,7 @@ func process_update(_delta):
 func physics_update(_delta):
 	
 	var direction = Input.get_axis("moveLeft", "moveRight")
-	var target_speed = player.max_speed * direction
-	player.velocity.x = move_toward(player.velocity.x, target_speed, player.ground_acceleration * _delta)
-	player.debug_speed.text = "Speed %s " % str(player.velocity.x)
+	player.velocity.x = player.apply_acceleration_in_x_on_ground(direction, _delta)
 	
 	if not player.is_on_floor():
 		player.state_machine.change_state("FallState")

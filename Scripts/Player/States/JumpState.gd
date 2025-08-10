@@ -27,8 +27,7 @@ func physics_update(_delta):
 		return
 	
 	var direction = Input.get_axis("moveLeft", "moveRight")
-	var target_speed = player.max_speed * direction
-	player.velocity.x = move_toward(player.velocity.x, target_speed, player.air_acceleration * _delta)
+	player.velocity.x = player.apply_acceleration_in_x_in_air(direction, _delta)
 
 	# When velocity starts going downward, switch to Fall
 	if not player.is_on_floor() and player.velocity.y > 0:

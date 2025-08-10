@@ -1,4 +1,4 @@
-# res://Scripts/Player/States/LandState.gd
+# res://Scripts/Player/States/HardLandState.gd
 
 extends PlayerState
 
@@ -19,7 +19,7 @@ func process_update(_delta):
 func physics_update(_delta):
 	
 	player.velocity.y = 0.0
-	player.velocity.x = move_toward(player.velocity.x, 0.0, player.ground_deacceleration * _delta)
+	player.velocity.x = player.apply_deacceleration_in_x_on_ground(_delta)
 	
 func _end():
 	if player.is_on_floor(): 
