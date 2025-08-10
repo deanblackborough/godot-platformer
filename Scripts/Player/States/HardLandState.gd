@@ -2,7 +2,7 @@
 
 extends PlayerState
 
-class_name LandState
+class_name HardLandState
 
 var timer
 
@@ -11,8 +11,11 @@ func enter(_player):
 	
 	player.play_animation("land")
 	
+	timer = get_tree().create_timer(player.hard_land_time) 
+	
 func process_update(_delta):
-	pass
+	
+	await timer.timeout
 
 func physics_update(_delta):
 	

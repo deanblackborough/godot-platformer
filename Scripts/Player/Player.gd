@@ -4,17 +4,23 @@ extends CharacterBody2D
 
 class_name Player
 
-@export var world_gravity: float = 1920
-@export var world_terminal_velocity: float = 525
+@export_group("World")
+@export var world_gravity: float = 1500
+@export var world_terminal_velocity: float = 500
 
-@export var player_max_speed: float = 140.0
-@export var player_acceleration: int = 1500
-@export var player_jump_force: float = -450
-@export var player_max_jumps: int = 1
+@export_group("Player Movement")
+@export var max_speed: float = 140.0
+@export var ground_acceleration: int = 1500
+@export var ground_deacceleration: int = 1500
 
-var player_jumps: int = 0
-var player_hard_land_time: float = 0.3
-var player_weapon_drawn: bool = false
+@export_group("Player Jumping")
+@export var jump_force: float = -500
+@export var max_jumps: int = 2
+
+var jumps: int = 0
+var jump_handled: bool = false
+var hard_land_time: float = 0.4
+var weapon_drawn: bool = false
 
 @onready var state_machine: StateMachine = $StateMachine
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -28,23 +34,37 @@ var player_weapon_drawn: bool = false
 
 func _ready():
 	$Camera2D.zoom = Vector2(2, 2)
-	debug_max_speed.text = "MaxSpeed: +/- %s" % str(player_max_speed)
-	state_machine.change_state("IdleState")
 	
-func _input(event: InputEvent):
-	state_machine.input_update(event)
+	debug_max_speed.text = "MaxSpeed: +/- %s" % str(max_speed)
+	state_machine.change_state("IdleState")
 	
 func _process(delta: float):
 	state_machine.process_update(delta)
-	debug_weapon_drawn.text = "WeaponDrawn: %s" % str(player_weapon_drawn)
-	debug_jumps.text = "Jumps: %d" % player_jumps
+	debug_weapon_drawn.text = "WeaponDrawn: %s" % str(weapon_drawn)
+	debug_jumps.text = "Jumps: %d" % jumps
 
 func _physics_process(delta: float):
+	
+	if not is_on_floor():
+		velocity.y = min(velocity.y + world_gravity * delta, world_terminal_velocity)	
+	
 	state_machine.physics_update(delta)
 	move_and_slide()
 	
 func play_animation(animation: String, weapon_version: bool = false):
-	if weapon_version == true and player_weapon_drawn == true:
+	if weapon_version == true and weapon_drawn == true:
 		animation_player.play("%s-weapon" % animation)
 	else:
 		animation_player.play(animation)
+		
+func can_jump() -> bool:
+	if jumps < max_jumps:
+		return true
+			
+	return false
+	
+func try_to_jump():
+		state_machine.change_state("JumpState")
+		jumps += 1
+		return
+	

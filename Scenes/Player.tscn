@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://8kakpu88i1mo"]
+[gd_scene load_steps=25 format=3 uid="uid://8kakpu88i1mo"]
 
 [ext_resource type="Script" uid="uid://dy2xjon041wsh" path="res://Scripts/Player/Player.gd" id="1_dqkch"]
 [ext_resource type="Texture2D" uid="uid://cs0ryd8b3da5h" path="res://Sprites/Player/Player-Idle.png" id="2_miouo"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://c7phxbod0loy" path="res://Scripts/Player/States/JumpState.gd" id="8_yoq75"]
 [ext_resource type="Script" uid="uid://yk6y6fvq5cxt" path="res://Scripts/Player/States/RunState.gd" id="9_ksbbd"]
 [ext_resource type="Script" uid="uid://dtnmdps6cxjra" path="res://Scripts/Player/States/LandState.gd" id="11_ksbbd"]
+[ext_resource type="Script" uid="uid://dg7120rfyqfda" path="res://Scripts/Player/States/HardLandState.gd" id="13_miouo"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dewec"]
 radius = 6.0
@@ -458,6 +459,7 @@ _data = {
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_dqkch")
+world_gravity = 2000.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -14)
@@ -497,6 +499,10 @@ metadata/_custom_type_script = "uid://c7txd6g22535f"
 
 [node name="LandState" type="Node" parent="StateMachine"]
 script = ExtResource("11_ksbbd")
+metadata/_custom_type_script = "uid://c7txd6g22535f"
+
+[node name="HardLandState" type="Node" parent="StateMachine"]
+script = ExtResource("13_miouo")
 metadata/_custom_type_script = "uid://c7txd6g22535f"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

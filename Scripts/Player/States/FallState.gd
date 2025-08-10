@@ -7,35 +7,29 @@ class_name FallState
 var fall_time: float = 0.0
 
 func enter(_player):
+	
 	super.enter(_player)
 	fall_time = 0.0
+	
 	player.play_animation("fall")
 	
-func process_update(delta):
-	fall_time += delta;
+func process_update(_delta):
+	
+	fall_time += _delta;
+
+func physics_update(_delta):
 	
 	var direction = Input.get_axis("moveLeft", "moveRight")
-	player.debug_speed.text = "Speed %s " % str(player.player_max_speed * direction)
-	player.velocity.x = player.player_max_speed * direction
-
-func physics_update(delta):
+	player.velocity.x = player.max_speed * direction
 	
-	player.velocity.y += player.world_gravity * delta
-	if player.velocity.y > player.world_terminal_velocity:
-		player.velocity.y = player.world_terminal_velocity
-	
-	if Input.is_action_just_pressed("jump"):
-		if player.player_jumps < player.player_max_jumps:
-			player.player_jumps += 1
-			player.state_machine.change_state("JumpState")
-			return
+	if Input.is_action_just_pressed("jump") and player.can_jump():
+		player.try_to_jump()
+		return
 
 	if player.is_on_floor():
-		player.player_jumps = 0;
-		
-		if fall_time > player.player_hard_land_time:
-			player.state_machine.change_state("LandState")
+		if fall_time > player.hard_land_time:
+			player.state_machine.change_state("HardLandState")
 		else:
-			player.state_machine.change_state("IdleState")
+			player.state_machine.change_state("LandState")
 		return
 		
