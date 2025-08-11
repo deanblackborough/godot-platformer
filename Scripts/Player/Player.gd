@@ -30,6 +30,7 @@ class_name Player
 
 var jumps: int = 0
 var weapon_drawn: bool = false
+var is_crouched: bool = false
 
 @onready var state_machine: StateMachine = $StateMachine
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -37,6 +38,7 @@ var weapon_drawn: bool = false
 
 @onready var collision_shape_standing: CollisionShape2D = $CollisionShapeStanding
 @onready var collision_shape_crouched: CollisionShape2D = $CollisionShapeCrouched
+@onready var collision_ray_cast: RayCast2D = $CanStandRayCast 
 
 @onready var debug_state: Label = $CanvasLayer/MarginContainer/VBoxContainer/State
 @onready var debug_max_speed: Label = $CanvasLayer/MarginContainer/VBoxContainer/MaxSpeed
@@ -56,6 +58,7 @@ func _ready():
 	state_machine.change_state("IdleState")
 	
 func _process(delta: float):
+
 	state_machine.process_update(delta)
 	debug_weapon_drawn.text = "WeaponDrawn: %s" % str(weapon_drawn)
 	debug_jumps.text = "Jumps: %d" % jumps
@@ -127,7 +130,10 @@ func apply_deacceleration_in_x_in_air(delta: float) -> float:
 	return player_velocity
 	
 func can_stand() -> bool:
-	return true
+	if (collision_ray_cast.is_colliding()):
+		return false
+		
+	return true;
 	
 func set_collision_shape(shape) -> void:
 	
@@ -136,9 +142,6 @@ func set_collision_shape(shape) -> void:
 	
 	match shape:
 		collision_shapes.STANDING:
-			if !can_stand():
-				return
-				
 			collision_shape_standing.set_deferred("disabled", false)
 			collision_shape_crouched.set_deferred("disabled", true)
 		collision_shapes.CROUCHED:

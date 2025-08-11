@@ -1,27 +1,27 @@
-# res://Scripts/Player/States/RunState.gd
+# res://Scripts/Player/States/WalkCrouchState.gd
 
 extends PlayerState
 
-class_name RunState
+class_name WalkCrouchState
 
 func enter(_player: Player):
 	
 	super.enter(_player)
 	
-	player.is_crouched = false
-	player.set_collision_shape(player.collision_shapes.STANDING)
-	player.play_animation("run", true)
+	player.is_crouched = true
+	player.set_collision_shape(player.collision_shapes.CROUCHED)
+	player.play_animation("walk-crouch")
 		
 func process_update(_delta):
 	
-	if Input.is_action_just_pressed("toggleWeapon"):
-		player.weapon_drawn = !player.weapon_drawn
-		player.play_animation("run", true)
-			
+	if Input.is_action_just_pressed("crouch") and player.is_crouched == true:
+		player.state_machine.change_state("IdleState")
+		return
+	
 	var direction = Input.get_axis("moveLeft", "moveRight")
 	
 	if direction == 0:
-		player.state_machine.change_state("IdleState")
+		player.state_machine.change_state("IdleCrouchState")
 		return
 		
 	if direction < 0.0:

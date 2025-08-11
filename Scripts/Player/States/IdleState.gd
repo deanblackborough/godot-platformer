@@ -8,6 +8,7 @@ func enter(_player: Player):
 	
 	super.enter(_player)
 	
+	player.is_crouched = false
 	player.velocity.x = 0
 	
 	player.set_collision_shape(player.collision_shapes.STANDING)
@@ -15,14 +16,26 @@ func enter(_player: Player):
 
 func process_update(_delta):
 	
+	if Input.is_action_just_pressed("crouch"):
+		if player.is_crouched == false:
+			player.state_machine.change_state("IdleCrouchState")
+			return
+		else:
+			player.state_machine.change_state("IdleState")
+			return
+	
 	if Input.is_action_just_pressed("toggleWeapon"):
 		player.weapon_drawn = !player.weapon_drawn
 		player.play_animation("idle", true)
 		
 	var direction = Input.get_axis("moveLeft", "moveRight")
 	if player.is_on_floor() && direction != 0:
-		player.state_machine.change_state("RunState")
-		return
+		if player.is_crouched == false:
+			player.state_machine.change_state("WalkCrouchState")
+			return
+		else:
+			player.state_machine.change_state("RunState")
+			return
 
 
 func physics_update(_delta):

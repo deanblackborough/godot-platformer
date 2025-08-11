@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://8kakpu88i1mo"]
+[gd_scene load_steps=33 format=3 uid="uid://8kakpu88i1mo"]
 
 [ext_resource type="Script" uid="uid://dy2xjon041wsh" path="res://Scripts/Player/Player.gd" id="1_dqkch"]
 [ext_resource type="Texture2D" uid="uid://cs0ryd8b3da5h" path="res://Sprites/Player/Player-Idle.png" id="2_miouo"]
@@ -10,10 +10,14 @@
 [ext_resource type="Texture2D" uid="uid://dvb313ruktcwl" path="res://Sprites/Player/Player-Run.png" id="6_lslt6"]
 [ext_resource type="Script" uid="uid://bfmc5tb6g0pha" path="res://Scripts/Player/States/IdleState.gd" id="7_megsn"]
 [ext_resource type="Texture2D" uid="uid://cw18hkoom5w7f" path="res://Sprites/Player/Player-Run-Weapon.png" id="7_ulo2v"]
+[ext_resource type="Texture2D" uid="uid://ds5gymvsao71u" path="res://Sprites/Player/Player-Crouch-Idle.png" id="8_arntx"]
 [ext_resource type="Script" uid="uid://c7phxbod0loy" path="res://Scripts/Player/States/JumpState.gd" id="8_yoq75"]
 [ext_resource type="Script" uid="uid://yk6y6fvq5cxt" path="res://Scripts/Player/States/RunState.gd" id="9_ksbbd"]
+[ext_resource type="Texture2D" uid="uid://e50e5jjgqme6" path="res://Sprites/Player/Player-Crouch-Walk.png" id="9_ulo2v"]
 [ext_resource type="Script" uid="uid://dtnmdps6cxjra" path="res://Scripts/Player/States/LandState.gd" id="11_ksbbd"]
+[ext_resource type="Script" uid="uid://dmyjmsjr1xqx7" path="res://Scripts/Player/States/IdleCrouchState.gd" id="11_lslt6"]
 [ext_resource type="Script" uid="uid://dg7120rfyqfda" path="res://Scripts/Player/States/HardLandState.gd" id="13_miouo"]
+[ext_resource type="Script" uid="uid://b670w1aworaub" path="res://Scripts/Player/States/WalkCrouchState.gd" id="18_ulo2v"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o3h8g"]
 radius = 6.0
@@ -502,17 +506,125 @@ tracks/3/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7]
 }
 
+[sub_resource type="Animation" id="Animation_5v66d"]
+resource_name = "idle-crouch"
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("8_arntx")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+
+[sub_resource type="Animation" id="Animation_x63xi"]
+resource_name = "walk-crouch"
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("9_ulo2v")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lslt6"]
 _data = {
 &"RESET": SubResource("Animation_arntx"),
 &"fall": SubResource("Animation_1iu4k"),
 &"hard-land": SubResource("Animation_ulo2v"),
 &"idle": SubResource("Animation_1e7my"),
+&"idle-crouch": SubResource("Animation_5v66d"),
 &"idle-weapon": SubResource("Animation_bhhdu"),
 &"jump": SubResource("Animation_lslt6"),
 &"land": SubResource("Animation_m0x7a"),
 &"run": SubResource("Animation_o3h8g"),
-&"run-weapon": SubResource("Animation_megsn")
+&"run-weapon": SubResource("Animation_megsn"),
+&"walk-crouch": SubResource("Animation_x63xi")
 }
 
 [node name="Player" type="CharacterBody2D"]
@@ -528,6 +640,10 @@ shape = SubResource("CapsuleShape2D_o3h8g")
 position = Vector2(0, -8)
 shape = SubResource("CapsuleShape2D_1e7my")
 disabled = true
+
+[node name="CanStandRayCast" type="RayCast2D" parent="."]
+rotation = 3.14159
+target_position = Vector2(0, 28)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -567,6 +683,14 @@ metadata/_custom_type_script = "uid://c7txd6g22535f"
 
 [node name="HardLandState" type="Node" parent="StateMachine"]
 script = ExtResource("13_miouo")
+metadata/_custom_type_script = "uid://c7txd6g22535f"
+
+[node name="IdleCrouchState" type="Node" parent="StateMachine"]
+script = ExtResource("11_lslt6")
+metadata/_custom_type_script = "uid://c7txd6g22535f"
+
+[node name="WalkCrouchState" type="Node" parent="StateMachine"]
+script = ExtResource("18_ulo2v")
 metadata/_custom_type_script = "uid://c7txd6g22535f"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
