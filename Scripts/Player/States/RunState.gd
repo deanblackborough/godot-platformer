@@ -8,6 +8,7 @@ func enter(_player: Player):
 	
 	super.enter(_player)
 	
+	player.set_collision_shape(player.collision_shapes.STANDING)
 	player.play_animation("run", true)
 		
 func process_update(_delta):

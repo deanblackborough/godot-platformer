@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://8kakpu88i1mo"]
+[gd_scene load_steps=27 format=3 uid="uid://8kakpu88i1mo"]
 
 [ext_resource type="Script" uid="uid://dy2xjon041wsh" path="res://Scripts/Player/Player.gd" id="1_dqkch"]
 [ext_resource type="Texture2D" uid="uid://cs0ryd8b3da5h" path="res://Sprites/Player/Player-Idle.png" id="2_miouo"]
@@ -15,9 +15,13 @@
 [ext_resource type="Script" uid="uid://dtnmdps6cxjra" path="res://Scripts/Player/States/LandState.gd" id="11_ksbbd"]
 [ext_resource type="Script" uid="uid://dg7120rfyqfda" path="res://Scripts/Player/States/HardLandState.gd" id="13_miouo"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dewec"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o3h8g"]
 radius = 6.0
 height = 28.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1e7my"]
+radius = 6.0
+height = 16.0
 
 [sub_resource type="Animation" id="Animation_arntx"]
 length = 0.001
@@ -512,12 +516,18 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D"]
+floor_snap_length = 8.0
 script = ExtResource("1_dqkch")
 world_gravity = 2000.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShapeStanding" type="CollisionShape2D" parent="."]
 position = Vector2(0, -14)
-shape = SubResource("CapsuleShape2D_dewec")
+shape = SubResource("CapsuleShape2D_o3h8g")
+
+[node name="CollisionShapeCrouched" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
+shape = SubResource("CapsuleShape2D_1e7my")
+disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -567,37 +577,37 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -89.0
-offset_top = -77.0
+offset_left = -135.0
+offset_top = -96.0
 grow_horizontal = 0
 grow_vertical = 0
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer"]
 layout_mode = 2
 
 [node name="State" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 11
 text = "State: "
 
 [node name="MaxSpeed" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 10
-text = "Speed: "
+theme_override_font_sizes/font_size = 11
+text = "Max Speed: "
 
 [node name="Speed" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 11
 text = "Speed: "
 
 [node name="WeaponDrawn" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 11
 text = "WeaponDrawn: "
 
 [node name="Jumps" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 11
 text = "Jumps: "

@@ -9,7 +9,9 @@ var timer: SceneTreeTimer
 func enter(_player):
 	super.enter(_player)
 	
+	player.set_collision_shape(player.collision_shapes.CROUCHED)
 	player.play_animation("hard-land")
+	
 	timer = get_tree().create_timer(player.hard_land_run_time)
 	timer.timeout.connect(_end, CONNECT_ONE_SHOT)
 	

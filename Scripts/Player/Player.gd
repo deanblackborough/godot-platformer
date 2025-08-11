@@ -23,17 +23,20 @@ class_name Player
 @export var hard_land_run_time: float = 0.8
 @export var hard_land_fall_time: float = 0.6
 @export var land_run_time: float = 0.2
+@export var coyote_time : float = 0.1
+@export var buffer_time : float = 0.12
+@export var coyote_timer : float = 0.0
+@export var buffer_timer : float = -1.0
 
 var jumps: int = 0
-var coyote_time : float = 0.1
-var buffer_time : float = 0.12
-var coyote_timer : float = 0.0
-var buffer_timer : float = -1.0
 var weapon_drawn: bool = false
 
 @onready var state_machine: StateMachine = $StateMachine
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var sprite: Sprite2D = $Sprite2D
+
+@onready var collision_shape_standing: CollisionShape2D = $CollisionShapeStanding
+@onready var collision_shape_crouched: CollisionShape2D = $CollisionShapeCrouched
 
 @onready var debug_state: Label = $CanvasLayer/MarginContainer/VBoxContainer/State
 @onready var debug_max_speed: Label = $CanvasLayer/MarginContainer/VBoxContainer/MaxSpeed
@@ -41,9 +44,14 @@ var weapon_drawn: bool = false
 @onready var debug_weapon_drawn: Label = $CanvasLayer/MarginContainer/VBoxContainer/WeaponDrawn
 @onready var debug_jumps: Label = $CanvasLayer/MarginContainer/VBoxContainer/Jumps
 
+enum collision_shapes { STANDING, CROUCHED }
+
+var active_collision_shape := collision_shapes.STANDING
+
 func _ready():
 	$Camera2D.zoom = Vector2(2, 2)
 	
+	set_collision_shape(active_collision_shape)
 	debug_max_speed.text = "MaxSpeed: +/- %s" % str(max_speed)
 	state_machine.change_state("IdleState")
 	
@@ -95,25 +103,40 @@ func do_jump():
 func apply_acceleration_in_x_on_ground(direction: float, delta: float) -> float:
 	var target_speed = max_speed * direction
 	var player_velocity = move_toward(velocity.x, target_speed, ground_acceleration * delta)
-	debug_speed.text = "Speed %s " % str(player_velocity)
+	debug_speed.text = "Speed %s " % str(roundf(player_velocity))
 	
 	return player_velocity
 	
 func apply_acceleration_in_x_in_air(direction: float, delta: float) -> float:
 	var target_speed = max_speed * direction
 	var player_velocity = move_toward(velocity.x, target_speed, air_acceleration * delta)
-	debug_speed.text = "Speed %s " % str(player_velocity)
+	debug_speed.text = "Speed %s " % str(roundf(player_velocity))
 	
 	return player_velocity
 	
 func apply_deacceleration_in_x_on_ground(delta: float) -> float:
 	var player_velocity = move_toward(velocity.x, 0.0, ground_deacceleration * delta)
-	debug_speed.text = "Speed %s " % str(player_velocity)
+	debug_speed.text = "Speed %s " % str(roundf(player_velocity))
 	
 	return player_velocity
 	
 func apply_deacceleration_in_x_in_air(delta: float) -> float:
 	var player_velocity = move_toward(velocity.x, 0.0, ground_deacceleration * delta)
-	debug_speed.text = "Speed %s " % str(player_velocity)
+	debug_speed.text = "Speed %s " % str(roundf(player_velocity))
 	
 	return player_velocity
+	
+func set_collision_shape(shape) -> void:
+	
+	if shape == active_collision_shape:
+		return
+	
+	match shape:
+		collision_shapes.STANDING:
+			collision_shape_standing.set_deferred("disabled", false)
+			collision_shape_crouched.set_deferred("disabled", true)
+		collision_shapes.CROUCHED:
+			collision_shape_standing.set_deferred("disabled", true)
+			collision_shape_crouched.set_deferred("disabled", false)
+			
+	active_collision_shape = shape

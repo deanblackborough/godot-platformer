@@ -7,6 +7,7 @@ class_name JumpState
 func enter(_player):
 	super.enter(_player)
 	
+	player.set_collision_shape(player.collision_shapes.STANDING)
 	player.play_animation("jump")
 	
 func process_update(_delta):

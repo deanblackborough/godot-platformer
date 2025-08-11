@@ -10,6 +10,7 @@ func enter(_player: Player):
 	
 	player.velocity.x = 0
 	
+	player.set_collision_shape(player.collision_shapes.STANDING)
 	player.play_animation("idle", true)
 
 func process_update(_delta):
