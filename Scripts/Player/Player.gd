@@ -126,6 +126,9 @@ func apply_deacceleration_in_x_in_air(delta: float) -> float:
 	
 	return player_velocity
 	
+func can_stand() -> bool:
+	return true
+	
 func set_collision_shape(shape) -> void:
 	
 	if shape == active_collision_shape:
@@ -133,6 +136,9 @@ func set_collision_shape(shape) -> void:
 	
 	match shape:
 		collision_shapes.STANDING:
+			if !can_stand():
+				return
+				
 			collision_shape_standing.set_deferred("disabled", false)
 			collision_shape_crouched.set_deferred("disabled", true)
 		collision_shapes.CROUCHED:
