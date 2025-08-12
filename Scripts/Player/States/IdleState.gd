@@ -8,35 +8,36 @@ func enter(_player: Player):
 	
 	super.enter(_player)
 	
-	player.is_crouched = false
+	player.is_crouched_changed.connect(_on_is_crouch_changed)
+	
 	player.velocity.x = 0
 	
 	player.set_collision_shape(player.collision_shapes.STANDING)
-	player.play_animation("idle", true)
+	player.play_animation("idle", player.weapon_drawn)
+	
+func _on_is_crouch_changed(new_value: bool):
+	if new_value == true:
+		player.state_machine.change_state("IdleCrouchState")
+		return
+		
+func exit():
+	player.is_crouched_changed.disconnect(_on_is_crouch_changed)
 
 func process_update(_delta):
 	
-	if Input.is_action_just_pressed("crouch"):
-		if player.is_crouched == false:
-			player.state_machine.change_state("IdleCrouchState")
-			return
-		else:
-			player.state_machine.change_state("IdleState")
-			return
-	
-	if Input.is_action_just_pressed("toggleWeapon"):
-		player.weapon_drawn = !player.weapon_drawn
-		player.play_animation("idle", true)
-		
 	var direction = Input.get_axis("moveLeft", "moveRight")
-	if player.is_on_floor() && direction != 0:
-		if player.is_crouched == false:
-			player.state_machine.change_state("WalkCrouchState")
-			return
-		else:
-			player.state_machine.change_state("RunState")
-			return
-
+	
+	if direction == 0 and player.is_crouched == true:
+		player.state_machine.change_state("IdleCrouchState")
+		return
+		
+	if direction != 0 and player.is_crouched == true:
+		player.state_machine.change_state("WalkCrouchState")
+		return
+		
+	if direction != 0 and player.is_crouched == false:
+		player.state_machine.change_state("RunState")
+		return
 
 func physics_update(_delta):
 	

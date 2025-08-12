@@ -32,6 +32,8 @@ var jumps: int = 0
 var weapon_drawn: bool = false
 var is_crouched: bool = false
 
+signal is_crouched_changed(new_value: bool)
+
 @onready var state_machine: StateMachine = $StateMachine
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var sprite: Sprite2D = $Sprite2D
@@ -45,6 +47,7 @@ var is_crouched: bool = false
 @onready var debug_speed: Label = $CanvasLayer/MarginContainer/VBoxContainer/Speed
 @onready var debug_weapon_drawn: Label = $CanvasLayer/MarginContainer/VBoxContainer/WeaponDrawn
 @onready var debug_jumps: Label = $CanvasLayer/MarginContainer/VBoxContainer/Jumps
+@onready var debug_is_crouched: Label = $CanvasLayer/MarginContainer/VBoxContainer/IsCrouched
 
 enum collision_shapes { STANDING, CROUCHED }
 
@@ -56,12 +59,25 @@ func _ready():
 	set_collision_shape(active_collision_shape)
 	debug_max_speed.text = "MaxSpeed: +/- %s" % str(max_speed)
 	state_machine.change_state("IdleState")
+
+func _input(event: InputEvent):
+	if event.is_action_pressed("crouch"):
+		is_crouched = !is_crouched
+		is_crouched_changed.emit(is_crouched)
+		
+		print("Is Crouched set to " + str(is_crouched))
+		
+	if Input.is_action_pressed("toggleWeapon"):
+		weapon_drawn = !weapon_drawn
+		
+		print("Weapon drawn set " + str(is_crouched))
 	
 func _process(delta: float):
 
 	state_machine.process_update(delta)
 	debug_weapon_drawn.text = "WeaponDrawn: %s" % str(weapon_drawn)
 	debug_jumps.text = "Jumps: %d" % jumps
+	debug_is_crouched.text = "IsCrouched: %s" % str(is_crouched)
 
 func _physics_process(delta: float):
 	
