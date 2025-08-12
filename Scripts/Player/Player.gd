@@ -62,10 +62,16 @@ func _ready():
 
 func _input(event: InputEvent):
 	if event.is_action_pressed("crouch"):
-		is_crouched = !is_crouched
-		is_crouched_changed.emit(is_crouched)
+		var new_value := !is_crouched
+
+		if new_value == false and can_stand() == false:
+			print("Cannot stand, collision block")
+			return
 		
-		print("Is Crouched set to " + str(is_crouched))
+		if new_value != is_crouched:
+			is_crouched = new_value
+			is_crouched_changed.emit(is_crouched)
+			print("Is Crouched set to " + str(is_crouched))
 		
 	if Input.is_action_pressed("toggleWeapon"):
 		weapon_drawn = !weapon_drawn
