@@ -44,6 +44,7 @@ func physics_update(_delta):
 	player.velocity.x = player.apply_acceleration_in_x_on_ground(direction, _delta)
 	
 	if not player.is_on_floor():
+		player.force_stand()
 		player.state_machine.change_state("FallState")
 		return
 	

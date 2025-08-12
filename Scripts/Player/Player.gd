@@ -95,6 +95,12 @@ func _physics_process(delta: float):
 	state_machine.physics_update(delta)
 	move_and_slide()
 	
+func force_stand() -> void:
+	if is_crouched and can_stand():
+		is_crouched = false
+		is_crouched_changed.emit(false)
+		print("Force standing state")
+	
 func play_animation(animation: String, weapon_version: bool = false):
 	if weapon_version == true and weapon_drawn == true:
 		animation_player.play("%s-weapon" % animation)
@@ -121,6 +127,8 @@ func can_jump_now() -> bool:
 	return (coyote_timer > 0.0 or jumps < max_jumps) and buffer_timer >= 0.0
 
 func do_jump():
+	force_stand()
+	
 	jumps += 1
 	velocity.y = jump_force
 	buffer_timer = -1.0

@@ -42,6 +42,11 @@ func process_update(_delta):
 func physics_update(_delta):
 			
 	if not player.is_on_floor():
+		player.force_stand()
 		player.state_machine.change_state("FallState")
+		return
+		
+	if Input.is_action_just_pressed("jump"): 
+		player.queue_jump()
 		return
 		

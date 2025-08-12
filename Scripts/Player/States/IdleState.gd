@@ -25,6 +25,13 @@ func exit():
 
 func process_update(_delta):
 	
+	# Move this to the player class, also
+	# create a temp dir var so we don't have to ready 
+	# from the property, apparently slightly quicker.
+	
+	# same for other values and also don't compare to true/false
+	# just do if or if not
+	
 	var direction = Input.get_axis("moveLeft", "moveRight")
 	
 	if direction == 0 and player.is_crouched == true:
