@@ -9,6 +9,7 @@ func enter(_player: Player):
 	super.enter(_player)
 	
 	player.is_crouched_changed.connect(_on_is_crouch_changed)
+	player.is_weapon_drawn_changed.connect(_on_is_weapon_drawn_changed)
 	
 	player.velocity.x = 0
 	
@@ -20,8 +21,13 @@ func _on_is_crouch_changed(new_value: bool):
 		player.state_machine.change_state("IdleCrouchState")
 		return
 		
+func _on_is_weapon_drawn_changed(new_value: bool):
+	player.play_animation("idle", player.weapon_drawn)
+	return
+		
 func exit():
 	player.is_crouched_changed.disconnect(_on_is_crouch_changed)
+	player.is_weapon_drawn_changed.disconnect(_on_is_weapon_drawn_changed)
 
 func process_update(_delta):
 	
@@ -31,6 +37,8 @@ func process_update(_delta):
 	
 	# same for other values and also don't compare to true/false
 	# just do if or if not
+	
+	# Weapon switching is no longer working
 	
 	var direction = Input.get_axis("moveLeft", "moveRight")
 	

@@ -9,20 +9,21 @@ More details soon, aiming for feature parity with my [Game Maker Platformer](htt
 
 ## Features
 
-- Simple state machine for player movement, Fall, Idle, Jump, Run and Land
-- Gravity setting and terminal velocity setting
-- Max jumps setting
-- Hard land timer setting
-- Toggle weapon, alternate idle and run animations when weapon equipped
-- Tilemap for grass (sides terrain set)
-- Debug panel to show player, state, weapon status, speed etc.
+- Simple state machine, includes the following states, Fall, Idle, Jump, Run, Land, Hard Land, IdleCrouch and WalkCrouch
+- Majority of code in player scripts, states are simple
+- Signals for player options, is-crouched, weapon drawn etc.
+- Weapon drawn versions for idle and run
+- Max Jumps setting
+- Hard land timer
+- Land time, for weight
+- Tilemap for grass with sides based terrain set
+- Tilemap for details
+- Debug panel to show states other details
 
 ## Next
-- Tileset for foliage to add detail
-- Switch input checks to base player class and input method so each of the three, input, process and physics_process are used correctly
-- Lerping on the animations
-- Simple combat, pixel perfect collisions for swings
+- Clean up states
 - Basic enemies, patrolling
+- Combat, pixel perfect collisions for swings
 - much more.
 
 ## To do

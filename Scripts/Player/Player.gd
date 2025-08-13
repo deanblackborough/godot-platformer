@@ -33,6 +33,7 @@ var weapon_drawn: bool = false
 var is_crouched: bool = false
 
 signal is_crouched_changed(new_value: bool)
+signal is_weapon_drawn_changed(new_value: bool)
 
 @onready var state_machine: StateMachine = $StateMachine
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -71,12 +72,15 @@ func _input(event: InputEvent):
 		if new_value != is_crouched:
 			is_crouched = new_value
 			is_crouched_changed.emit(is_crouched)
-			print("Is Crouched set to " + str(is_crouched))
+			print("Is crouched set to " + str(is_crouched))
 		
 	if Input.is_action_pressed("toggleWeapon"):
-		weapon_drawn = !weapon_drawn
+		var new_value := !weapon_drawn
 		
-		print("Weapon drawn set " + str(is_crouched))
+		if new_value != weapon_drawn:
+			weapon_drawn = new_value
+			is_weapon_drawn_changed.emit(weapon_drawn)
+			print("Weapon drawn set " + str(weapon_drawn))
 	
 func _process(delta: float):
 
