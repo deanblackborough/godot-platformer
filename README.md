@@ -12,6 +12,7 @@ More details soon, aiming for feature parity with my [Game Maker Platformer](htt
 - Simple state machine, includes the following states, Fall, Idle, Jump, Run, Land, Hard Land, IdleCrouch and WalkCrouch
 - Majority of code in player scripts, states are simple
 - Signals for player options, is-crouched, weapon drawn etc.
+- MUltiple collision states, raycast 2d to ensure can stand when there is collsion
 - Weapon drawn versions for idle and run
 - Max Jumps setting
 - Hard land timer
