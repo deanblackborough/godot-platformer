@@ -18,7 +18,7 @@ func process_update(_delta):
 	
 	fall_time += _delta;
 	
-	var direction = Input.get_axis("moveLeft", "moveRight")
+	var direction = player.direction
 	
 	if direction < 0.0:
 		player.sprite.flip_h = true 

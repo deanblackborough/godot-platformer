@@ -25,10 +25,11 @@ func _on_is_weapon_drawn_changed(new_value: bool):
 		
 func exit():
 	player.is_crouched_changed.disconnect(_on_is_crouch_changed)
+	player.is_weapon_drawn_changed.disconnect(_on_is_weapon_drawn_changed)
 		
 func process_update(_delta):
 	
-	var direction = Input.get_axis("moveLeft", "moveRight")
+	var direction = player.direction
 	
 	if direction == 0 and player.is_crouched == false:
 		player.state_machine.change_state("IdleState")
@@ -45,7 +46,7 @@ func process_update(_delta):
 
 func physics_update(_delta):
 	
-	var direction = Input.get_axis("moveLeft", "moveRight")
+	var direction = player.direction
 	player.velocity.x = player.apply_acceleration_in_x_on_ground(direction, _delta)
 	
 	if not player.is_on_floor():

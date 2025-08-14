@@ -5,11 +5,12 @@ extends CharacterBody2D
 class_name Player
 
 @export_group("World")
-@export var world_gravity: float = 1500
+@export var world_gravity: float = 1800
 @export var world_terminal_velocity: float = 500
 
 @export_group("Player Movement")
 @export var max_speed: float = 160.0
+@export var max_speed_crouched: float = 100.0
 @export var ground_acceleration: int = 1500
 @export var ground_deacceleration: int = 2000
 @export var air_acceleration: int = 800
@@ -31,6 +32,8 @@ class_name Player
 var jumps: int = 0
 var weapon_drawn: bool = false
 var is_crouched: bool = false
+
+var direction :float = 0.0;
 
 signal is_crouched_changed(new_value: bool)
 signal is_weapon_drawn_changed(new_value: bool)
@@ -62,6 +65,9 @@ func _ready():
 	state_machine.change_state("IdleState")
 
 func _input(event: InputEvent):
+	
+	direction = Input.get_axis("moveLeft", "moveRight")
+	
 	if event.is_action_pressed("crouch"):
 		var new_value := !is_crouched
 
@@ -139,6 +145,13 @@ func do_jump():
 	
 func apply_acceleration_in_x_on_ground(direction: float, delta: float) -> float:
 	var target_speed = max_speed * direction
+	var player_velocity = move_toward(velocity.x, target_speed, ground_acceleration * delta)
+	debug_speed.text = "Speed %s " % str(roundf(player_velocity))
+	
+	return player_velocity
+	
+func apply_acceleration_in_x_on_ground_crouched(direction: float, delta: float) -> float:
+	var target_speed = max_speed_crouched * direction
 	var player_velocity = move_toward(velocity.x, target_speed, ground_acceleration * delta)
 	debug_speed.text = "Speed %s " % str(roundf(player_velocity))
 	

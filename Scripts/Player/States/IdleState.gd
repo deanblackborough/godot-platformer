@@ -31,7 +31,7 @@ func exit():
 
 func process_update(_delta):
 	
-	var direction = Input.get_axis("moveLeft", "moveRight")
+	var direction = player.direction
 	
 	if direction == 0 and player.is_crouched == true:
 		player.state_machine.change_state("IdleCrouchState")

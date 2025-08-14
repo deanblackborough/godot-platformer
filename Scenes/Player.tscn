@@ -630,7 +630,6 @@ _data = {
 [node name="Player" type="CharacterBody2D"]
 floor_snap_length = 8.0
 script = ExtResource("1_dqkch")
-world_gravity = 2000.0
 
 [node name="CollisionShapeStanding" type="CollisionShape2D" parent="."]
 position = Vector2(0, -14)

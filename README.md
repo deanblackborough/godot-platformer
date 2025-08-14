@@ -22,7 +22,6 @@ More details soon, aiming for feature parity with my [Game Maker Platformer](htt
 - Debug panel to show states other details
 
 ## Next
-- Clean up states
 - Basic enemies, patrolling
 - Combat, pixel perfect collisions for swings
 - much more.
