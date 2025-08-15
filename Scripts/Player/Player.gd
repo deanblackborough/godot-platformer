@@ -66,7 +66,17 @@ func _ready():
 
 func _input(event: InputEvent):
 	
+	if Input.is_action_just_pressed("attackJab"):
+		print("Switching to weapon attack jab")
+		state_machine.change_state("WeaponAttackJabState")
+		return
+	
 	direction = Input.get_axis("moveLeft", "moveRight")
+	
+	if direction < 0.0:
+		sprite.flip_h = true 
+	else:
+		sprite.flip_h = false
 	
 	if event.is_action_pressed("crouch"):
 		var new_value := !is_crouched

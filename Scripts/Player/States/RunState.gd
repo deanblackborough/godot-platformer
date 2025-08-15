@@ -38,7 +38,7 @@ func process_update(_delta):
 	if direction == 0 and player.is_crouched == true:
 		player.state_machine.change_state("IdleCrouchState")
 		return 
-		
+	
 	if direction < 0.0:
 		player.sprite.flip_h = true 
 	else:
