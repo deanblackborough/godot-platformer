@@ -66,6 +66,14 @@ func _ready():
 
 func _input(event: InputEvent):
 	
+	# Change how player facing is managed
+	# Deal with the offset when facing to the left
+	# for the jab
+	
+	## Add a basic enmmy that just stands still
+	
+	## Add in player damage and enemy health
+	
 	if weapon_drawn and Input.is_action_just_pressed("attackJab"):
 		print("Switching to weapon attack jab")
 		state_machine.change_state("WeaponAttackJabState")
