@@ -68,7 +68,6 @@ func _ready():
 func _input(event: InputEvent):
 	
 	if weapon_drawn and Input.is_action_just_pressed("attackJab"):
-		print("Switching to weapon attack jab")
 		state_machine.change_state("WeaponAttackJabState")
 		return
 	
@@ -82,13 +81,13 @@ func _input(event: InputEvent):
 		var new_value := !is_crouched
 
 		if new_value == false and can_stand() == false:
-			print("Cannot stand, collision block")
+			print_debug("Cannot stand, collision block")
 			return
 		
 		if new_value != is_crouched:
 			is_crouched = new_value
 			is_crouched_changed.emit(is_crouched)
-			print("Is crouched set to " + str(is_crouched))
+			print_debug("Is crouched set to " + str(is_crouched))
 		
 	if Input.is_action_pressed("toggleWeapon"):
 		var new_value := !weapon_drawn
@@ -96,7 +95,7 @@ func _input(event: InputEvent):
 		if new_value != weapon_drawn:
 			weapon_drawn = new_value
 			is_weapon_drawn_changed.emit(weapon_drawn)
-			print("Weapon drawn set " + str(weapon_drawn))
+			print_debug("Weapon drawn set " + str(weapon_drawn))
 	
 func _process(delta: float):
 
@@ -119,7 +118,7 @@ func force_stand() -> void:
 	if is_crouched and can_stand():
 		is_crouched = false
 		is_crouched_changed.emit(false)
-		print("Force standing state")
+		print_debug("Force standing state")
 	
 func play_animation(animation: String, weapon_version: bool = false):
 	if weapon_version == true and weapon_drawn == true:

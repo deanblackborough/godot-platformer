@@ -10,8 +10,6 @@ func enter(_player: Player):
 	
 	player.velocity.x = 0
 	
-	print("In Weapon Attach Jab")
-	
 	player.play_animation("weapon-attack-jab")
 	
 	var anim_player = player.animation_player

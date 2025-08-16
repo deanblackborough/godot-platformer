@@ -15,9 +15,13 @@ func _ready():
 func change_state(new_state_name: String):
 	if current_state:
 		current_state.exit()
-	current_state = states[new_state_name]
-	owner.debug_state.text = "State: %s" % new_state_name
-	current_state.enter(owner)
+		
+	if states.has(new_state_name):
+		current_state = states[new_state_name]
+		owner.debug_state.text = "State: %s" % new_state_name
+		current_state.enter(owner)
+	else:
+		print_debug('State: %s does not exist' % new_state_name)
 		
 func process_update(delta: float):
 	if current_state:

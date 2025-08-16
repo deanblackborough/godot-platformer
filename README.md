@@ -26,6 +26,7 @@ project soon and then more in this as it appears to be the favourite over the Ga
 - Max Jumps setting (Includes coyoete timeer and buffering)
 - Hard land timer
 - Land timer, for weight
+- Force standing after crouch fall and crouch jump
 - Tilemap for grass with sides based terrain set
 - Tilemap for details
 - Debug panel to show states and other details
