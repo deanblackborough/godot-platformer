@@ -14,7 +14,15 @@ func enter(_player: Player):
 		
 func on_animation_finished(_animation: StringName):
 	if _animation == "weapon-attack-jab":
-		player.state_machine.change_state("IdleState")
+		
+		if not player.is_on_floor():
+			player.state_machine.change_state("FallState")
+		elif player.direction != 0.0 and not player.is_crouched:
+			player.state_machine.change_state("RunState")
+		elif player.is_crouched:
+			player.state_machine.change_state("IdleCrouchState")
+		else:
+			player.state_machine.change_state("IdleState")
 	
 func process_update(_delta):
 	pass

@@ -43,7 +43,8 @@ signal is_weapon_drawn_changed(new_value: bool)
 
 @onready var state_machine: StateMachine = $StateMachine
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var sprite: Sprite2D = $Sprite2D
+@onready var sprite: Sprite2D = $Visual/Sprite2D
+@onready var visual: Node2D = $Visual
 
 @onready var collision_shape_standing: CollisionShape2D = $CollisionShapeStanding
 @onready var collision_shape_crouched: CollisionShape2D = $CollisionShapeCrouched
@@ -96,9 +97,9 @@ func _input(event: InputEvent):
 	
 	if direction != 0.0:
 		facing_direction = sign(direction)
-		sprite.scale.x = facing_direction
+		visual.scale.x = facing_direction
 	
-	if event.is_action_pressed("crouch"):
+	if Input.is_action_just_pressed("crouch"):
 		var new_value := !is_crouched
 
 		if new_value == false and can_stand() == false:
@@ -110,7 +111,7 @@ func _input(event: InputEvent):
 			is_crouched_changed.emit(is_crouched)
 			print_debug("Is crouched set to " + str(is_crouched))
 		
-	if Input.is_action_pressed("toggleWeapon"):
+	if Input.is_action_just_pressed("toggleWeapon"):
 		var new_value := !weapon_drawn
 		
 		if new_value != weapon_drawn:
