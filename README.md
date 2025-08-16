@@ -21,7 +21,8 @@ project soon and then more in this as it appears to be the favourite over the Ga
 	- Walk Crouched
 	- Attack Jab
 - Majority of code in player scripts, states are simple, just switch and handle physics
-- Signals for player options, is-crouched, weapon drawn etc.
+- Signals for player options, is crouched, weapon drawn etc.
+- Weapon sheaved when state does not allow attacks
 - Multiple collision states, raycast 2d to ensure player can stand when there is collsion above their head
 - Max Jumps setting (Includes coyoete timeer and buffering)
 - Hard land timer
@@ -37,7 +38,6 @@ project soon and then more in this as it appears to be the favourite over the Ga
 - much more.
 
 # Issues
-- States which don't support the weapon being drawn should sheave it
 - Project structure is all over the place
 
 ## To do

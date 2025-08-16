@@ -10,6 +10,7 @@ func enter(_player: Player):
 	
 	player.velocity.x = 0
 	
+	player.sheave_weapon()
 	player.set_collision_shape(player.collision_shapes.CROUCHED)
 	player.play_animation("idle-crouch")
 	

@@ -8,6 +8,7 @@ func enter(_player: Player):
 	
 	super.enter(_player)
 	
+	player.sheave_weapon()
 	player.set_collision_shape(player.collision_shapes.CROUCHED)
 	player.play_animation("walk-crouch")
 	

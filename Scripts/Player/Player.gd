@@ -143,6 +143,11 @@ func force_stand() -> void:
 		is_crouched = false
 		is_crouched_changed.emit(false)
 		print_debug("Force standing state")
+		
+func sheave_weapon() -> void:
+	if weapon_drawn == true:
+		weapon_drawn = false
+		print_debug("Weapon sheaved")
 	
 func play_animation(animation: String, weapon_version: bool = false):
 	if weapon_version == true and weapon_drawn == true:

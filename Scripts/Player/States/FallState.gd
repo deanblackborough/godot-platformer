@@ -11,6 +11,7 @@ func enter(_player):
 	super.enter(_player)
 	fall_time = 0.0
 	
+	player.sheave_weapon()
 	player.set_collision_shape(player.collision_shapes.STANDING)
 	player.play_animation("fall")
 	
