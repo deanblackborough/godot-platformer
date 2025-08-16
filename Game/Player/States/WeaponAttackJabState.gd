@@ -10,6 +10,7 @@ func enter(_player: Player):
 	
 	player.velocity.x = 0
 	
+	player.is_attacking = true
 	player.play_animation("weapon-attack-jab")
 		
 func on_animation_finished(_animation: StringName):

@@ -90,12 +90,10 @@ func _on_weapon_drawn_changed(new_value: bool) -> void:
 func _input(event: InputEvent):
 	
 	if weapon_drawn and not is_attacking and Input.is_action_just_pressed("attackJab"):
-		is_attacking = true
 		state_machine.change_state("WeaponAttackJabState")
 		return
 		
 	if weapon_drawn and not is_attacking and Input.is_action_just_pressed("attackOverhead"):
-		is_attacking = true
 		state_machine.change_state("WeaponAttackOverheadState")
 		return
 	
