@@ -15,6 +15,8 @@ func enter(_player: Player):
 func on_animation_finished(_animation: StringName):
 	if _animation == "weapon-attack-jab":
 		
+		player.is_attacking = false;
+		
 		if not player.is_on_floor():
 			player.state_machine.change_state("FallState")
 		elif player.direction != 0.0 and not player.is_crouched:

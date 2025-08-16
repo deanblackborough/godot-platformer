@@ -24,6 +24,7 @@ project soon and then more in this as it appears to be the favourite over the Ga
 - Majority of code in player scripts, states are simple, just switch and handle physics
 - Signals for player options, is crouched, weapon drawn etc.
 - Weapon sheaved when state does not allow attacks
+- Attacks must play out, no switching or cancelling
 - Multiple collision states, raycast 2d to ensure player can stand when there is collsion above their head
 - Max Jumps setting (Includes coyoete timeer and buffering)
 - Hard land timer
