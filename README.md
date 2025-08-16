@@ -38,6 +38,7 @@ project soon and then more in this as it appears to be the favourite over the Ga
 
 # Issues
 - States which don't support the weapon being drawn should sheave it
+- Project structure is all over the place
 
 ## To do
 Everything to get it equal to the [Game Maker Platformer](https://github.com/deanblackborough/gm-platformer) project and much more
