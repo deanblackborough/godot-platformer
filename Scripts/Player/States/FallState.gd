@@ -17,13 +17,6 @@ func enter(_player):
 func process_update(_delta):
 	
 	fall_time += _delta;
-	
-	var direction = player.direction
-	
-	if direction < 0.0:
-		player.sprite.flip_h = true 
-	else:
-		player.sprite.flip_h = false
 
 func physics_update(_delta):
 	

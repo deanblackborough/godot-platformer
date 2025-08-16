@@ -32,11 +32,6 @@ func process_update(_delta):
 	if direction == 0 and player.is_crouched == false:
 		player.state_machine.change_state("IdleState")
 		return
-		
-	if direction < 0.0:
-		player.sprite.flip_h = true 
-	else:
-		player.sprite.flip_h = false
 
 func physics_update(_delta):
 	

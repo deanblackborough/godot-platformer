@@ -2,28 +2,37 @@
 
 Platformer starter for Godot - testing out the engine
 
-More details soon, aiming for feature parity with my [Game Maker Platformer](https://github.com/deanblackborough/gm-platformer) project
+More details soon, aiming for feature parity with my [Game Maker Platformer](https://github.com/deanblackborough/gm-platformer) 
+project soon and then more in this as it appears to be the favourite over the Game Maker Studio
 
 ## Current Progress
 ![Gif of Progress](current-progress.gif "Current progress animation")
 
 ## Features
 
-- Simple state machine, includes the following states, Fall, Idle, Jump, Run, Land, Hard Land, IdleCrouch and WalkCrouch
-- Majority of code in player scripts, states are simple
+- Simple state machine, includes the following states
+	- Fall
+	- Idle (With and without weapon)
+	- Jump 
+	- Run (With and without weapon)
+	- Land 
+	- Hard Land 
+	- Idle Crouched 
+	- Walk Crouched
+	- Attack Jab
+- Majority of code in player scripts, states are simple, just switch and handle physics
 - Signals for player options, is-crouched, weapon drawn etc.
-- MUltiple collision states, raycast 2d to ensure can stand when there is collsion
-- Weapon drawn versions for idle and run
-- Max Jumps setting
+- Multiple collision states, raycast 2d to ensure player can stand when there is collsion above their head
+- Max Jumps setting (Includes coyoete timeer and buffering)
 - Hard land timer
-- Land time, for weight
+- Land timer, for weight
 - Tilemap for grass with sides based terrain set
 - Tilemap for details
-- Debug panel to show states other details
+- Debug panel to show states and other details
 
 ## Next
-- Basic enemies, patrolling
-- Combat, pixel perfect collisions for swings
+- Basic enemies, standing and then patrolling
+- Combat, hit and hurt boxes, accurate collisions for swings
 - much more.
 
 ## To do

@@ -33,7 +33,8 @@ var jumps: int = 0
 var weapon_drawn: bool = false
 var is_crouched: bool = false
 
-var direction :float = 0.0;
+var direction :float = 0.0
+var facing_direction: int = 1 # 1 is right, -1 is left
 
 signal is_crouched_changed(new_value: bool)
 signal is_weapon_drawn_changed(new_value: bool)
@@ -66,20 +67,16 @@ func _ready():
 
 func _input(event: InputEvent):
 	
-	# Change how player facing is managed
-	# Deal with the offset when facing to the left
-	# for the jab
-	
-	## Add a basic enmmy that just stands still
-	
-	## Add in player damage and enemy health
-	
 	if weapon_drawn and Input.is_action_just_pressed("attackJab"):
 		print("Switching to weapon attack jab")
 		state_machine.change_state("WeaponAttackJabState")
 		return
 	
 	direction = Input.get_axis("moveLeft", "moveRight")
+	
+	if direction != 0.0:
+		facing_direction = sign(direction)
+		sprite.scale.x = facing_direction
 	
 	if event.is_action_pressed("crouch"):
 		var new_value := !is_crouched

@@ -12,12 +12,7 @@ func enter(_player):
 	
 func process_update(_delta):
 	
-	var direction = player.direction
-	
-	if direction < 0.0:
-		player.sprite.flip_h = true 
-	else:
-		player.sprite.flip_h = false
+	pass
 
 func physics_update(_delta):
 	
