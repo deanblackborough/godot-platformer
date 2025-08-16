@@ -20,6 +20,7 @@ project soon and then more in this as it appears to be the favourite over the Ga
 	- Idle Crouched 
 	- Walk Crouched
 	- Attack Jab
+	- Attack Overhead
 - Majority of code in player scripts, states are simple, just switch and handle physics
 - Signals for player options, is crouched, weapon drawn etc.
 - Weapon sheaved when state does not allow attacks
@@ -39,6 +40,7 @@ project soon and then more in this as it appears to be the favourite over the Ga
 
 # Issues
 - Landing weird when on corner
+- We don't need state in state names
 
 ## To do
 Everything to get it equal to the [Game Maker Platformer](https://github.com/deanblackborough/gm-platformer) project and much more

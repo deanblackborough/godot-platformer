@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://8kakpu88i1mo"]
+[gd_scene load_steps=39 format=3 uid="uid://8kakpu88i1mo"]
 
 [ext_resource type="Script" uid="uid://dy2xjon041wsh" path="res://Game/Player/Player.gd" id="1_cdlqx"]
 [ext_resource type="Texture2D" uid="uid://cs0ryd8b3da5h" path="res://Resources/Player/Animations/Player-Idle.png" id="2_rmqab"]
@@ -21,6 +21,7 @@
 [ext_resource type="Script" uid="uid://dmyjmsjr1xqx7" path="res://Game/Player/States/IdleCrouchState.gd" id="19_eh0xq"]
 [ext_resource type="Script" uid="uid://b670w1aworaub" path="res://Game/Player/States/WalkCrouchState.gd" id="20_tc4sj"]
 [ext_resource type="Script" uid="uid://c8nrpimqpjy54" path="res://Game/Player/States/WeaponAttackJabState.gd" id="21_x03lt"]
+[ext_resource type="Script" uid="uid://dr8lxj2h4jyoa" path="res://Game/Player/States/WeaponAttackOverheadState.gd" id="22_rmqab"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o3h8g"]
 radius = 6.0
@@ -963,6 +964,10 @@ metadata/_custom_type_script = "uid://c7txd6g22535f"
 
 [node name="WeaponAttackJabState" type="Node" parent="PlayerStateMachine"]
 script = ExtResource("21_x03lt")
+metadata/_custom_type_script = "uid://c7txd6g22535f"
+
+[node name="WeaponAttackOverheadState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("22_rmqab")
 metadata/_custom_type_script = "uid://c7txd6g22535f"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

@@ -92,6 +92,10 @@ func _input(event: InputEvent):
 	if weapon_drawn and Input.is_action_just_pressed("attackJab"):
 		state_machine.change_state("WeaponAttackJabState")
 		return
+		
+	if weapon_drawn and Input.is_action_just_pressed("attackOverhead"):
+		state_machine.change_state("WeaponAttackOverheadState")
+		return
 	
 	direction = Input.get_axis("moveLeft", "moveRight")
 	
