@@ -8,24 +8,17 @@ func enter(_player: Player):
 	
 	super.enter(_player)
 	
-	player.is_crouched_changed.connect(_on_is_crouch_changed)
-	player.is_weapon_drawn_changed.connect(_on_is_weapon_drawn_changed)
-	
 	player.set_collision_shape(player.collision_shapes.STANDING)
 	player.play_animation("run", player.weapon_drawn)
 	
-func _on_is_crouch_changed(new_value: bool):
-	if new_value == true:
+func on_is_crouched_changed(_new_value: bool):
+	if _new_value == true:
 		player.state_machine.change_state("WalkCrouchState")
 		return
 		
-func _on_is_weapon_drawn_changed(new_value: bool):
+func on_is_weapon_drawn_changed(_new_value: bool):
 	player.play_animation("run", player.weapon_drawn)
 	return
-		
-func exit():
-	player.is_crouched_changed.disconnect(_on_is_crouch_changed)
-	player.is_weapon_drawn_changed.disconnect(_on_is_weapon_drawn_changed)
 		
 func process_update(_delta):
 	

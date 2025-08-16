@@ -22,3 +22,11 @@ func process_update(_delta: float) -> void:
 func physics_update(_delta: float) -> void:
 	pass
 	
+func on_animation_finished(_animation: StringName) -> void:
+	pass
+
+func on_is_crouched_changed(_new_value: bool) -> void:
+	pass
+
+func on_weapon_drawn_changed(_new_value: bool) -> void:
+	pass

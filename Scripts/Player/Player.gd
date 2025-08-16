@@ -61,9 +61,25 @@ var active_collision_shape := collision_shapes.STANDING
 func _ready():
 	$Camera2D.zoom = Vector2(2, 2)
 	
+	animation_player.animation_finished.connect(_on_animation_finished)
+	is_crouched_changed.connect(_on_is_crouched_changed)
+	is_weapon_drawn_changed.connect(_on_weapon_drawn_changed)
+	
 	set_collision_shape(active_collision_shape)
 	debug_max_speed.text = "MaxSpeed: +/- %s" % str(max_speed)
 	state_machine.change_state("IdleState")
+	
+func _on_animation_finished(animation: StringName) -> void:
+	if state_machine.current_state:
+		state_machine.current_state.on_animation_finished(animation)
+
+func _on_is_crouched_changed(new_value: bool) -> void:
+	if state_machine.current_state:
+		state_machine.current_state.on_is_crouched_changed(new_value)
+
+func _on_weapon_drawn_changed(new_value: bool) -> void:
+	if state_machine.current_state:
+		state_machine.current_state.on_weapon_drawn_changed(new_value)
 
 func _input(event: InputEvent):
 	

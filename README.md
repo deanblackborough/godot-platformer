@@ -36,6 +36,9 @@ project soon and then more in this as it appears to be the favourite over the Ga
 - Combat, hit and hurt boxes, accurate collisions for swings
 - much more.
 
+# Issues
+- States which don't support the weapon being drawn should sheave it
+
 ## To do
 Everything to get it equal to the [Game Maker Platformer](https://github.com/deanblackborough/gm-platformer) project and much more
 

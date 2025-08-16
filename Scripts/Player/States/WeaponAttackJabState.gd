@@ -11,13 +11,9 @@ func enter(_player: Player):
 	player.velocity.x = 0
 	
 	player.play_animation("weapon-attack-jab")
-	
-	var anim_player = player.animation_player
-	if not anim_player.is_connected("animation_finished", Callable(self, "_on_animation_finished")):
-		anim_player.animation_finished.connect(_on_animation_finished)
 		
-func _on_animation_finished(anim_name: StringName):
-	if anim_name == "weapon-attack-jab":
+func on_animation_finished(_animation: StringName):
+	if _animation == "weapon-attack-jab":
 		player.state_machine.change_state("IdleState")
 	
 func process_update(_delta):
