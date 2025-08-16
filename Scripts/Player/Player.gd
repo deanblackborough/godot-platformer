@@ -33,6 +33,8 @@ var jumps: int = 0
 var weapon_drawn: bool = false
 var is_crouched: bool = false
 
+var jump_pressed: bool = false
+
 var direction :float = 0.0
 var facing_direction: int = 1 # 1 is right, -1 is left
 
@@ -69,6 +71,8 @@ func _ready():
 	debug_max_speed.text = "MaxSpeed: +/- %s" % str(max_speed)
 	state_machine.change_state("IdleState")
 	
+	
+# Signals	
 func _on_animation_finished(animation: StringName) -> void:
 	if state_machine.current_state:
 		state_machine.current_state.on_animation_finished(animation)
@@ -80,6 +84,7 @@ func _on_is_crouched_changed(new_value: bool) -> void:
 func _on_weapon_drawn_changed(new_value: bool) -> void:
 	if state_machine.current_state:
 		state_machine.current_state.on_weapon_drawn_changed(new_value)
+
 
 func _input(event: InputEvent):
 	
@@ -112,6 +117,8 @@ func _input(event: InputEvent):
 			weapon_drawn = new_value
 			is_weapon_drawn_changed.emit(weapon_drawn)
 			print_debug("Weapon drawn set " + str(weapon_drawn))
+			
+	jump_pressed = Input.is_action_just_pressed("jump")
 	
 func _process(delta: float):
 

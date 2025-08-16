@@ -40,7 +40,7 @@ func process_update(_delta):
 
 func physics_update(_delta):
 	
-	if Input.is_action_just_pressed("jump"):
+	if player.jump_pressed:
 		player.queue_jump()
 		return
 			

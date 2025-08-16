@@ -16,11 +16,11 @@ func process_update(_delta):
 
 func physics_update(_delta):
 	
-	if Input.is_action_just_pressed("jump"):
+	if player.jump_pressed:
 		player.queue_jump()
 		return
 	
-	var direction = Input.get_axis("moveLeft", "moveRight")
+	var direction = player.direction
 	player.velocity.x = player.apply_acceleration_in_x_in_air(direction, _delta)
 
 	# When velocity starts going downward, switch to Fall
