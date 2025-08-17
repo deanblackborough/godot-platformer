@@ -35,7 +35,7 @@ project soon and then more in this as it appears to be the favourite over the Ga
 - Debug panel to show states and other details
 
 ## Next
-- Basic enemies, standing and then patrolling
+- Basic enemies, standing and the state machine
 - Combat, hit and hurt boxes, accurate collisions for swings
 - much more.
 

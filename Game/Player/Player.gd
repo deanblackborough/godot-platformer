@@ -72,7 +72,6 @@ func _ready():
 	debug_max_speed.text = "MaxSpeed: +/- %s" % str(max_speed)
 	state_machine.change_state("IdleState")
 	
-	
 # Signals	
 func _on_animation_finished(animation: StringName) -> void:
 	if state_machine.current_state:
