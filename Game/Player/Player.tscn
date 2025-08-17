@@ -917,14 +917,16 @@ position = Vector2(0, -16)
 texture = ExtResource("2_rmqab")
 hframes = 10
 
-[node name="CanStandRayCast" type="RayCast2D" parent="."]
-rotation = 3.14159
-target_position = Vector2(0, 28)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Visual"]
+root_node = NodePath("../..")
 libraries = {
 &"": SubResource("AnimationLibrary_lslt6")
 }
+
+[node name="CanStandRayCast" type="RayCast2D" parent="."]
+rotation = 3.14159
+target_position = Vector2(0, 28)
+collision_mask = 4
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_enabled = true

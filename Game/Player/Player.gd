@@ -42,7 +42,7 @@ signal is_crouched_changed(new_value: bool)
 signal is_weapon_drawn_changed(new_value: bool)
 
 @onready var state_machine: PlayerStateMachine = $PlayerStateMachine
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var animation_player: AnimationPlayer = $Visual/AnimationPlayer
 @onready var sprite: Sprite2D = $Visual/Sprite2D
 @onready var visual: Node2D = $Visual
 
