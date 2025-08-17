@@ -8,35 +8,53 @@ project soon and then more in this as it appears to be the favourite over the Ga
 ## Current Progress
 ![Gif of Progress](current-progress.gif "Current progress animation")
 
-## Features
+## Current Features (WIP)
 
-- Simple state machine, includes the following states
-	- Fall
-	- Idle (With and without weapon)
-	- Jump 
-	- Run (With and without weapon)
-	- Land 
-	- Hard Land 
-	- Idle Crouched 
-	- Walk Crouched
-	- Attack Jab
-	- Attack Overhead
-- Majority of code in player scripts, states are simple, just switch and handle physics
-- Signals for player options, is crouched, weapon drawn etc.
-- Weapon sheaved when state does not allow attacks
-- Attacks must play out, no switching or cancelling
-- Multiple collision states, raycast 2d to ensure player can stand when there is collsion above their head
-- Max Jumps setting (Includes coyoete timeer and buffering)
-- Hard land timer
-- Land timer, for weight
-- Force standing after crouch fall and crouch jump
-- Tilemap for grass with sides based terrain set
-- Tilemap for details
-- Debug panel to show states and other details
+This starter is built around a simple but extensible state machine. The goal is to keep the player logic clean, physics consistent, and states lightweight so they can be expanded later.
+
+### Player States
+
+#### Currently implemented:
+
+- Fall
+- Idle (with or without weapon)
+- Jump
+- Run (with or without weapon)
+- Land
+- Hard Land
+- Idle Crouched
+- Walk Crouched
+- Attack Jab
+- Attack Overhead
+
+#### Core Systems
+
+- Lightweight state scripts: Most logic lives in the Player script; states just handle 
+switching and physics adjustments.
+- Signals for player status: Track options like crouching or weapon draw state.
+- Weapon handling: Weapons are automatically sheathed in states where attacking isn’t possible.
+- Committed attacks: Once an attack starts, it must finish—no cancelling or mid-swing switching.
+
+#### Combat & Collision
+
+- Basic hurtboxes + hitboxes: Enemies are deleted on hit for now—health/damage systems are still in progress.
+- Multiple collision states: Uses RayCast2D to check whether the player can stand (prevents clipping into ceilings).
+- Jump system: Includes configurable max jumps, coyote time, and input buffering.
+- Landing weight: Both hard land and soft land timers add a sense of impact.
+- Force stand mechanic: Player is forced upright after crouch-jumps and crouch-falls.
+
+#### Level & Debugging
+
+- Grass terrain tileset with sides-based terrain setup.
+- Detail tileset for background/world dressing.
+- Debug panel to display current state and runtime values.
 
 ## Next
-- Basic enemies, standing and the state machine
-- Combat, hit and hurt boxes, accurate collisions for swings
+- Added basic enemy anims (1 frame) - working on states for idle, attack, die, patrol and target
+- Collision for overhead attack
+- Enemy and player health
+- General combat feel
+- Attach when weapon sheaved should draw weapon ready for attack
 - much more.
 
 # Issues

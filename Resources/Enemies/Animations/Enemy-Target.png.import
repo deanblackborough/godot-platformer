@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5jmmm473d5wi"
-path="res://.godot/imported/Zombie-Idle.png-8024157c223b30bbad460db2ce7e5e7e.ctex"
+uid="uid://bjx2f0xu8mlip"
+path="res://.godot/imported/Enemy-Target.png-1b122222ebf78c8b0eecc14d6a5180b0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Enemies/Animations/Zombie-Idle.png"
-dest_files=["res://.godot/imported/Zombie-Idle.png-8024157c223b30bbad460db2ce7e5e7e.ctex"]
+source_file="res://Resources/Enemies/Animations/Enemy-Target.png"
+dest_files=["res://.godot/imported/Enemy-Target.png-1b122222ebf78c8b0eecc14d6a5180b0.ctex"]
 
 [params]
 
