@@ -896,7 +896,9 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D"]
+collision_mask = 4
 floor_snap_length = 8.0
+platform_floor_layers = 4294901760
 script = ExtResource("1_cdlqx")
 
 [node name="CollisionShapeStanding" type="CollisionShape2D" parent="."]
