@@ -4,6 +4,8 @@ extends PlayerState
 
 class_name WeaponAttackJabState
 
+@onready var hit_box_jab: Hitbox = $"../../Visual/HitBoxes/HitBoxJab"
+
 func enter(_player: Player):
 	
 	super.enter(_player)
@@ -17,6 +19,7 @@ func on_animation_finished(_animation: StringName):
 	if _animation == "weapon-attack-jab":
 		
 		player.is_attacking = false;
+		hit_box_jab.set_active(false)
 		
 		if not player.is_on_floor():
 			player.state_machine.change_state("FallState")

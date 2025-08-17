@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://8kakpu88i1mo"]
+[gd_scene load_steps=41 format=3 uid="uid://8kakpu88i1mo"]
 
 [ext_resource type="Script" uid="uid://dy2xjon041wsh" path="res://Game/Player/Player.gd" id="1_cdlqx"]
 [ext_resource type="Texture2D" uid="uid://cs0ryd8b3da5h" path="res://Resources/Player/Animations/Player-Idle.png" id="2_rmqab"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://biowshq0b4lbg" path="res://Resources/Player/Animations/Player-Weapon-Attack-Jab.png" id="10_l7hvg"]
 [ext_resource type="Texture2D" uid="uid://bja4k0qn38yn7" path="res://Resources/Player/Animations/Player-Weapon-Attack-Overhead.png" id="11_qi2kp"]
 [ext_resource type="Script" uid="uid://02gy0espctyy" path="res://Core/StateMachine/PlayerStateMachine.gd" id="12_mpnws"]
+[ext_resource type="Script" uid="uid://cl8jtdt8u6uqi" path="res://Core/Combat/HitBox.gd" id="12_vr2vl"]
 [ext_resource type="Script" uid="uid://bh5bdvk1lv6o0" path="res://Game/Player/States/FallState.gd" id="13_g1umg"]
 [ext_resource type="Script" uid="uid://bfmc5tb6g0pha" path="res://Game/Player/States/IdleState.gd" id="14_l48hl"]
 [ext_resource type="Script" uid="uid://c7phxbod0loy" path="res://Game/Player/States/JumpState.gd" id="15_4wv4q"]
@@ -92,6 +93,18 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Visual/HitBoxes/HitBoxJab:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-7, -10)]
 }
 
 [sub_resource type="Animation" id="Animation_1iu4k"]
@@ -812,6 +825,35 @@ tracks/4/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6]
 }
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Visual/HitBoxes/HitBoxJab")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [false],
+"method": &"set_active"
+}, {
+"args": [true],
+"method": &"set_active"
+}]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Visual/HitBoxes/HitBoxJab:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-7, -10), Vector2(-7, -10), Vector2(27, -14), Vector2(27, -14), Vector2(14, -12)]
+}
 
 [sub_resource type="Animation" id="Animation_i2e8t"]
 resource_name = "weapon-attack-overhead"
@@ -895,6 +937,9 @@ _data = {
 &"weapon-attack-overhead": SubResource("Animation_i2e8t")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rmqab"]
+size = Vector2(15.25, 5)
+
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 4
 floor_snap_length = 8.0
@@ -923,12 +968,25 @@ libraries = {
 &"": SubResource("AnimationLibrary_lslt6")
 }
 
+[node name="HitBoxes" type="Node2D" parent="Visual"]
+
+[node name="HitBoxJab" type="Area2D" parent="Visual/HitBoxes"]
+position = Vector2(-7, -10)
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("12_vr2vl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Visual/HitBoxes/HitBoxJab"]
+position = Vector2(8, -9.53674e-07)
+shape = SubResource("RectangleShape2D_rmqab")
+
 [node name="CanStandRayCast" type="RayCast2D" parent="."]
 rotation = 3.14159
 target_position = Vector2(0, 28)
 collision_mask = 4
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -1)
 position_smoothing_enabled = true
 
 [node name="PlayerStateMachine" type="Node" parent="."]
