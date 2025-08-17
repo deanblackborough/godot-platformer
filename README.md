@@ -1,9 +1,27 @@
-# Godot-platformer
+# Godot Platformer Starter
 
-Platformer starter for Godot - testing out the engine
+A work-in-progress platformer starter project for Godot 4.4+, built as both a testbed for 
+learning the engine and a solid foundation for future projects.
 
-More details soon, aiming for feature parity with my [Game Maker Platformer](https://github.com/deanblackborough/gm-platformer) 
-project soon and then more in this as it appears to be the favourite over the Game Maker Studio
+The goal is to create a clean, reusable, and extensible base with all the fundamentals 
+you’d expect from a modern 2D platformer: responsive movement, a flexible state machine, 
+and early building blocks for combat, environment interaction, and progression systems.
+
+My [son](https://github.com/jackblackborough) will use this to develop his own games and ideas, 
+he is a huge fan of Hollow Knight and Dead Cells
+
+This project is being developed in parallel with my 
+[Game Maker Platformer Starter](https://github.com/deanblackborough/gm-platformer). 
+The plan is to reach feature parity with the GMS version in the very near future—then 
+expand beyond it, taking advantage of Godot’s strengths (open source, first-class 
+scene system, flexible scripting).
+
+I'm less likely to continue working on the Game Maker starter now I am making progress with
+Godot, it is so much more capable and easy to work with than Game Maker, imo.
+
+For me this project is primarily a testbed for platformer ideas and teaching my sons to 
+code. While I plan to eventually develop my own custom engine, Godot makes an excellent 
+sandbox for quickly testing mechanics and experimenting with design.
 
 ## Current Progress
 ![Gif of Progress](current-progress.gif "Current progress animation")
@@ -49,22 +67,41 @@ switching and physics adjustments.
 - Detail tileset for background/world dressing.
 - Debug panel to display current state and runtime values.
 
-## Next
-- Added basic enemy anims (1 frame) - working on states for idle, attack, die, patrol and target
-- Collision for overhead attack
-- Enemy and player health
-- General combat feel
-- Attach when weapon sheaved should draw weapon ready for attack
-- much more.
+## Next Up
 
-# Issues
-- Landing weird when on corner
-- We don't need state in state names
+Work in progress — here’s what’s currently on the horizon:
 
-## To do
-Everything to get it equal to the [Game Maker Platformer](https://github.com/deanblackborough/gm-platformer) project and much more
+- Enemy basics
+	- Placeholder “one-frame” animations in place now
+	- Expanding into proper enemy states: Idle, Patrol, Target/Chase, Attack, and Die
+	- Laying the foundation for more advanced AI later
+- Combat improvements
+	- Overhead attack collision tuned for better hit detection
+	- Player and enemy health systems (no more instant deletes!)
+	- Iterating on overall combat feel — timing, weight, and responsiveness
+	- Weapons will auto-draw if you attack while sheathed, keeping flow snappy
+- Polish & systems
+	- More visual feedback (hit flashes, particles, screen shake)
+	- Better debug tools for states, collisions, and timings
+	- Continuing to refine state transitions for smoother gameplay
+	- And of course: much more as the core loop starts feeling good.
+	
+## Known Issues
+
+A few rough edges we’re tracking early:
+
+- Landing quirks — corner cases (literally!) where the player lands strangely when 
+clipping onto tile edges
+- State naming — current states include “State” in their names; redundant and will 
+be cleaned up soon
+- General roughness — early systems are in place but still very WIP; 
+lots of polish passes to come
 
 ## Credits
+
+I'm working on systems, not art, the plan is my son will help with the art or 
+I will hire someone when the time is right. In the meantime I am using assets from 
+talented artists, details below.
 
 - Player character is by https://zegley.itch.io/ - check his page for this asset [here](https://zegley.itch.io/2d-platformermetroidvania-asset-pack)
 - Level assets by Kenney http://support.kenney.nl - modified slightly
