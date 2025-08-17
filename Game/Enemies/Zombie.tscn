@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://b0ayty3miaoai"]
+[gd_scene load_steps=9 format=3 uid="uid://b0ayty3miaoai"]
 
 [ext_resource type="Script" uid="uid://dn1f7ddspeqmm" path="res://Game/Enemies/Zombie.gd" id="1_ebmny"]
 [ext_resource type="Texture2D" uid="uid://b5jmmm473d5wi" path="res://Resources/Enemies/Animations/Zombie-Idle.png" id="1_ed6m7"]
+[ext_resource type="Script" uid="uid://c7w17j8di7n04" path="res://Core/Combat/Hurtbox.gd" id="3_mew3y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ebmny"]
-size = Vector2(16, 24)
+size = Vector2(13, 22)
 
 [sub_resource type="Animation" id="Animation_axucf"]
 length = 0.001
@@ -117,13 +118,16 @@ _data = {
 &"idle": SubResource("Animation_mew3y")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mew3y"]
+size = Vector2(13, 23)
+
 [node name="Zombie" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 4
 script = ExtResource("1_ebmny")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -12)
+position = Vector2(-0.5, -11)
 shape = SubResource("RectangleShape2D_ebmny")
 
 [node name="Visual" type="Node2D" parent="."]
@@ -137,3 +141,12 @@ hframes = 5
 libraries = {
 &"": SubResource("AnimationLibrary_1y3fc")
 }
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 8
+script = ExtResource("3_mew3y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(-0.5, -11.5)
+shape = SubResource("RectangleShape2D_mew3y")

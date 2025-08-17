@@ -11,6 +11,7 @@ signal deactivated
 
 var active: bool = false
 var initial_transform: Transform2D
+var already_hit := {}
 
 func _ready():
 	for shape in get_children():
@@ -19,12 +20,14 @@ func _ready():
 			
 	initial_transform = transform
 	disable()
+	connect("area_entered", Callable(self, "on_area_entered"))
 	
 func disable():
 	active = false
 	monitoring = false
 	for shape in collision_shapes:
 		shape.disabled = true
+	already_hit.clear()
 
 func set_active(_on: bool):
 	if active == _on:
@@ -39,6 +42,7 @@ func set_active(_on: bool):
 	if _on:
 		emit_signal("activated")
 	else:
+		already_hit.clear()
 		emit_signal("deactivated")
 		call_deferred("reset_pose")
 
@@ -47,3 +51,18 @@ func is_active() -> bool:
 	
 func reset_pose():
 	transform = initial_transform
+	
+func on_area_entered(area: Area2D) -> void:
+	if not active:
+		return
+		
+	if not area or not area.has_method("hit"):
+		return
+		
+	var id := area.get_instance_id()
+	if already_hit.has(id):
+		return
+		
+	already_hit[id] = true
+	
+	area.hit(null, self)
