@@ -16,9 +16,6 @@ The plan is to reach feature parity with the GMS version in the very near future
 expand beyond it, taking advantage of Godot’s strengths (open source, first-class 
 scene system, flexible scripting).
 
-I'm less likely to continue working on the Game Maker starter now I am making progress with
-Godot, it is so much more capable and easy to work with than Game Maker, imo.
-
 For me this project is primarily a testbed for platformer ideas and teaching my sons to 
 code. While I plan to eventually develop my own custom engine, Godot makes an excellent 
 sandbox for quickly testing mechanics and experimenting with design.
@@ -28,7 +25,9 @@ sandbox for quickly testing mechanics and experimenting with design.
 
 ## Current Features (WIP)
 
-This starter is built around a simple but extensible state machine. The goal is to keep the player logic clean, physics consistent, and states lightweight so they can be expanded later.
+This starter is built around a simple but extensible state machine. The goal is to 
+keep the player logic clean, physics consistent, and states lightweight so they can be 
+expanded later.
 
 ### Player States
 
@@ -88,7 +87,7 @@ Work in progress — here’s what’s currently on the horizon:
 	
 ## Known Issues
 
-A few rough edges we’re tracking early:
+There are a few rough edges:
 
 - Landing quirks — corner cases (literally!) where the player lands strangely when 
 clipping onto tile edges
