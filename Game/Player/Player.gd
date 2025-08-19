@@ -101,6 +101,9 @@ func _input(event: InputEvent):
 	if direction != 0.0:
 		facing_direction = sign(direction)
 		visual.scale.x = facing_direction
+		
+	if Input.is_action_just_pressed("escape"):
+		get_tree().change_scene_to_file("res://Game/MainMenu.tscn")
 	
 	if Input.is_action_just_pressed("crouch"):
 		var new_value := !is_crouched
