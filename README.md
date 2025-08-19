@@ -66,6 +66,9 @@ switching and physics adjustments.
 - Detail tileset for background/world dressing.
 - Debug panel to display current state and runtime values.
 
+#### General
+- Simple menu with a transition manager for switching between scenes
+
 ## Next Up
 
 Work in progress — here’s what’s currently on the horizon:
@@ -95,6 +98,7 @@ clipping onto tile edges
 be cleaned up soon
 - General roughness — early systems are in place but still very WIP; 
 lots of polish passes to come
+- Player is behind enemies
 
 ## Credits
 

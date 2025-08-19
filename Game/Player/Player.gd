@@ -86,7 +86,7 @@ func _on_weapon_drawn_changed(new_value: bool) -> void:
 		state_machine.current_state.on_weapon_drawn_changed(new_value)
 
 
-func _input(event: InputEvent):
+func _input(_event: InputEvent):
 	
 	if weapon_drawn and not is_attacking and Input.is_action_just_pressed("attackJab"):
 		state_machine.change_state("WeaponAttackJabState")
@@ -103,7 +103,9 @@ func _input(event: InputEvent):
 		visual.scale.x = facing_direction
 		
 	if Input.is_action_just_pressed("escape"):
-		get_tree().change_scene_to_file("res://Game/MainMenu.tscn")
+		var transition_manager := TransitionManager.new()
+		get_tree().root.add_child(transition_manager)
+		await transition_manager.change_scene_with_fade("res://Game/MainMenu.tscn")
 	
 	if Input.is_action_just_pressed("crouch"):
 		var new_value := !is_crouched
@@ -187,22 +189,22 @@ func do_jump():
 	velocity.y = jump_force
 	buffer_timer = -1.0
 	
-func apply_acceleration_in_x_on_ground(direction: float, delta: float) -> float:
-	var target_speed = max_speed * direction
+func apply_acceleration_in_x_on_ground(_direction: float, delta: float) -> float:
+	var target_speed = max_speed * _direction
 	var player_velocity = move_toward(velocity.x, target_speed, ground_acceleration * delta)
 	debug_speed.text = "Speed %s " % str(roundf(player_velocity))
 	
 	return player_velocity
 	
-func apply_acceleration_in_x_on_ground_crouched(direction: float, delta: float) -> float:
-	var target_speed = max_speed_crouched * direction
+func apply_acceleration_in_x_on_ground_crouched(_direction: float, delta: float) -> float:
+	var target_speed = max_speed_crouched * _direction
 	var player_velocity = move_toward(velocity.x, target_speed, ground_acceleration * delta)
 	debug_speed.text = "Speed %s " % str(roundf(player_velocity))
 	
 	return player_velocity
 	
-func apply_acceleration_in_x_in_air(direction: float, delta: float) -> float:
-	var target_speed = max_speed * direction
+func apply_acceleration_in_x_in_air(_direction: float, delta: float) -> float:
+	var target_speed = max_speed * _direction
 	var player_velocity = move_toward(velocity.x, target_speed, air_acceleration * delta)
 	debug_speed.text = "Speed %s " % str(roundf(player_velocity))
 	
