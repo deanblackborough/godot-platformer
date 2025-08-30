@@ -71,7 +71,7 @@ switching and physics adjustments.
 
 ## Next Up
 
-Work in progress — here’s what’s currently on the horizon:
+### Work in progress — here’s what’s currently on the horizon:
 
 - Enemy basics
 	- Placeholder “one-frame” animations in place now
@@ -83,10 +83,20 @@ Work in progress — here’s what’s currently on the horizon:
 	- Iterating on overall combat feel — timing, weight, and responsiveness
 	- Weapons will auto-draw if you attack while sheathed, keeping flow snappy
 - Polish & systems
+	- Collectables
 	- More visual feedback (hit flashes, particles, screen shake)
-	- Better debug tools for states, collisions, and timings
-	- Continuing to refine state transitions for smoother gameplay
 	- And of course: much more as the core loop starts feeling good.
+	
+### Quick Tweaks
+
+- If no weapon draw first press should show draw weapon
+- Code Review
+- Resources for player settings?
+- A background layer for the level
+- Better debug tools for states, collisions, and timing
+- Continuing to refine state transitions for smoother gameplay
+- Player is behind enemies
+- Drawn weapon should always do damage, why sheaving exists
 	
 ## Known Issues
 
@@ -94,11 +104,8 @@ There are a few rough edges:
 
 - Landing quirks — corner cases (literally!) where the player lands strangely when 
 clipping onto tile edges
-- State naming — current states include “State” in their names; redundant and will 
-be cleaned up soon
 - General roughness — early systems are in place but still very WIP; 
 lots of polish passes to come
-- Player is behind enemies
 
 ## Credits
 
@@ -108,3 +115,4 @@ talented artists, details below.
 
 - Player character is by https://zegley.itch.io/ - check his page for this asset [here](https://zegley.itch.io/2d-platformermetroidvania-asset-pack)
 - Level assets by Kenney http://support.kenney.nl - modified slightly
+- Font VT323 by peter.hull@oikoi.com
