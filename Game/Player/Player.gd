@@ -62,7 +62,7 @@ enum collision_shapes { STANDING, CROUCHED }
 var active_collision_shape := collision_shapes.STANDING
 
 func _ready():
-	$Camera2D.zoom = Vector2(2, 2)
+	$Camera2D.zoom = Vector2(1, 1)
 	
 	animation_player.animation_finished.connect(_on_animation_finished)
 	is_crouched_changed.connect(_on_is_crouched_changed)

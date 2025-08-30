@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://8kakpu88i1mo"]
+[gd_scene load_steps=42 format=3 uid="uid://8kakpu88i1mo"]
 
 [ext_resource type="Script" uid="uid://dy2xjon041wsh" path="res://Game/Player/Player.gd" id="1_cdlqx"]
 [ext_resource type="Texture2D" uid="uid://cs0ryd8b3da5h" path="res://Resources/Player/Animations/Player-Idle.png" id="2_rmqab"]
@@ -23,6 +23,7 @@
 [ext_resource type="Script" uid="uid://b670w1aworaub" path="res://Game/Player/States/WalkCrouchState.gd" id="20_tc4sj"]
 [ext_resource type="Script" uid="uid://c8nrpimqpjy54" path="res://Game/Player/States/WeaponAttackJabState.gd" id="21_x03lt"]
 [ext_resource type="Script" uid="uid://dr8lxj2h4jyoa" path="res://Game/Player/States/WeaponAttackOverheadState.gd" id="22_rmqab"]
+[ext_resource type="FontFile" uid="uid://c1fsjveuiww7a" path="res://Resources/Fonts/VT323/VT323-Regular.ttf" id="24_hgjse"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o3h8g"]
 radius = 6.0
@@ -1040,42 +1041,50 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -135.0
-offset_top = -96.0
+offset_left = -47.0
+offset_top = -64.0
 grow_horizontal = 0
 grow_vertical = 0
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer"]
 layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 0
 
 [node name="State" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 11
+theme_override_fonts/font = ExtResource("24_hgjse")
+theme_override_font_sizes/font_size = 6
 text = "State: "
 
 [node name="MaxSpeed" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 11
+theme_override_fonts/font = ExtResource("24_hgjse")
+theme_override_font_sizes/font_size = 6
 text = "Max Speed: "
 
 [node name="Speed" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 11
+theme_override_fonts/font = ExtResource("24_hgjse")
+theme_override_font_sizes/font_size = 6
 text = "Speed: "
 
 [node name="WeaponDrawn" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 11
+theme_override_fonts/font = ExtResource("24_hgjse")
+theme_override_font_sizes/font_size = 6
 text = "WeaponDrawn: "
 
 [node name="Jumps" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 11
+theme_override_fonts/font = ExtResource("24_hgjse")
+theme_override_font_sizes/font_size = 6
 text = "Jumps: "
 
 [node name="IsCrouched" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 11
+theme_override_fonts/font = ExtResource("24_hgjse")
+theme_override_font_sizes/font_size = 6
 text = "IsCrouched: "
